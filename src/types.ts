@@ -11,6 +11,7 @@ export interface ApplianceOption {
   name: string;
   description: string;
   price: number;
+  originalPrice?: number;
   estimatedMinutes: number;
   image: string;
 }

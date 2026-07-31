@@ -136,6 +136,11 @@ export const ApplianceServices: React.FC<ApplianceServicesProps> = ({ onOpenBook
                 <div className="space-y-2.5">
                   {selectedAppliance.options.map((opt) => {
                     const isPhoneInquiry = opt.name.includes('전화문의') || opt.description.includes('전화문의');
+                    const hasDiscount = opt.originalPrice && opt.originalPrice > opt.price;
+                    const discountPercent = hasDiscount
+                      ? Math.round(((opt.originalPrice! - opt.price) / opt.originalPrice!) * 100)
+                      : 0;
+
                     return (
                       <div
                         key={opt.id}
@@ -147,23 +152,43 @@ export const ApplianceServices: React.FC<ApplianceServicesProps> = ({ onOpenBook
                       >
                         <div>
                           <div className="flex items-center flex-wrap gap-1.5">
-                            <span className="text-sm font-bold text-gray-900">{opt.name}</span>
+                            <span className="text-sm font-extrabold text-gray-900">{opt.name}</span>
                             {isPhoneInquiry && (
                               <a
                                 href="tel:1577-7931"
                                 className="inline-flex items-center gap-1 text-[11px] font-black text-amber-800 bg-amber-100 px-2 py-0.5 rounded-md hover:bg-amber-200 transition-colors"
                               >
                                 <Phone className="w-3 h-3 text-amber-700" />
-                                <span>1가지만 세척시 1577-7931</span>
+                                <span>1대만 청소시 전화상담</span>
                               </a>
                             )}
                           </div>
                           <div className="text-xs text-gray-500 mt-0.5">{opt.description} (소요시간 약 {opt.estimatedMinutes}분)</div>
                         </div>
+
                         <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center flex-shrink-0 pt-1 sm:pt-0 border-t sm:border-t-0 border-gray-100">
-                          <div className="text-base font-black text-blue-600">
-                            {opt.price.toLocaleString()}원
-                          </div>
+                          {hasDiscount ? (
+                            <div className="flex items-center sm:flex-col sm:items-end gap-1.5 sm:gap-0">
+                              <div className="flex items-center space-x-1">
+                                <span className="text-xs text-rose-500 font-bold line-through decoration-rose-500 decoration-2">
+                                  {opt.originalPrice?.toLocaleString()}원
+                                </span>
+                                {discountPercent > 0 && (
+                                  <span className="text-[10px] font-black text-white bg-rose-500 px-1.5 py-0.2 rounded-md">
+                                    -{discountPercent}%
+                                  </span>
+                                )}
+                              </div>
+                              <div className="text-base sm:text-lg font-black text-blue-600 sm:text-blue-700">
+                                {opt.price.toLocaleString()}원
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="text-base sm:text-lg font-black text-blue-600 sm:text-blue-700">
+                              {opt.price.toLocaleString()}원
+                            </div>
+                          )}
+
                           <button
                             onClick={() => onOpenBooking(selectedAppliance.id)}
                             className="text-[11px] font-bold text-indigo-600 hover:underline flex items-center justify-end space-x-0.5 mt-0.5"
@@ -175,6 +200,32 @@ export const ApplianceServices: React.FC<ApplianceServicesProps> = ({ onOpenBook
                       </div>
                     );
                   })}
+                </div>
+
+                {/* Additional Surcharges / Business Notice Box */}
+                <div className="mt-3 p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs space-y-1.5">
+                  <div className="font-bold text-slate-800 flex items-center gap-1">
+                    <ShieldAlert className="w-4 h-4 text-amber-600" />
+                    <span>추가요금 및 특수작업 안내</span>
+                  </div>
+                  {selectedAppliance.id === 'aircon' && (
+                    <p className="text-slate-600 leading-relaxed">
+                      • <strong>특수 모델 추가요금 (+4만원)</strong>: 무풍3구, 갤러리, 로봇, 연아3구, 아로마계열, 미켈란젤로, 오브제, LG로봇계열 제품 등은 작업 난이도에 따라 추가요금 4만원이 발생합니다.
+                    </p>
+                  )}
+                  {selectedAppliance.id === 'washer' && (
+                    <p className="text-slate-600 leading-relaxed">
+                      • <strong>1대만 청소시 (드럼세탁기 위 건조기 설치)</strong>: 1대만 청소시 드럼세탁기 위에 건조기가 있는 경우 전화상담 후 안내해 드립니다. 작업장 사진을 보내주시면 상세히 안내해 드립니다. (1577-7931)
+                    </p>
+                  )}
+                  {selectedAppliance.id === 'dryer' && (
+                    <p className="text-slate-600 leading-relaxed">
+                      • <strong>건조기 이동 및 특수공간</strong>: 건조기 이동, 드럼 세탁기 위 건조기가 놓인 경우, 주변 공간이 협소한 경우 특수 작업비(+6만원)가 적용됩니다.
+                    </p>
+                  )}
+                  <p className="text-slate-600 leading-relaxed">
+                    • <strong>사업장/업소 오염도 추가요금 (+2만원)</strong>: 사업장의 경우 먼지 오염도 및 기름때가 심할 경우 현장 오염도에 따라 추가요금 2만원이 발생될 수 있습니다. (에어컨/세탁기/건조기 공통)
+                  </p>
                 </div>
               </div>
 

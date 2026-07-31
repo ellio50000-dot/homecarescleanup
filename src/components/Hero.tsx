@@ -147,9 +147,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenPartnerModal })
               {/* Grid of 6 appliances */}
               <div className="grid grid-cols-2 gap-2.5">
                 {[
-                  { id: 'aircon', name: '에어컨', tag: '벽걸이/스탠드/시스템', price: '70,000원~', icon: '❄️' },
+                  { id: 'aircon', name: '에어컨', tag: '벽걸이/스탠드/시스템', price: '80,000원~', icon: '❄️' },
                   { id: 'washer', name: '세탁기', tag: '통돌이/드럼/워시타워', price: '100,000원~', icon: '🧺' },
-                  { id: 'dryer', name: '건조기', tag: '콘덴서/히트펌프', price: '150,000원~', icon: '☀️' },
+                  { id: 'dryer', name: '건조기', tag: '콘덴서/히트펌프', price: '60,000원~', icon: '☀️' },
                   { id: 'purifier', name: '공기청정기', tag: '타워/가습겸용', price: '80,000원~', icon: '🍃' },
                   { id: 'dehumidifier', name: '제습기', tag: '가정용/대용량', price: '80,000원~', icon: '💧' },
                   { id: 'fridge', name: '냉장고', tag: '양문형/4도어/김치', price: '110,000원~', icon: '🧊' },

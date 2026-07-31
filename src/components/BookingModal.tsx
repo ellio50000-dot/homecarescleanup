@@ -300,11 +300,17 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       onChange={(e) => setPickerOptionId(e.target.value)}
                       className="w-full text-xs font-semibold p-2.5 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-500"
                     >
-                      {APPLIANCES_DATA.find((a) => a.id === pickerApplianceId)?.options.map((opt) => (
-                        <option key={opt.id} value={opt.id}>
-                          {opt.name} ({opt.price.toLocaleString()}원)
-                        </option>
-                      ))}
+                      {APPLIANCES_DATA.find((a) => a.id === pickerApplianceId)?.options.map((opt) => {
+                        const hasDiscount = opt.originalPrice && opt.originalPrice > opt.price;
+                        return (
+                          <option key={opt.id} value={opt.id}>
+                            {opt.name}{' '}
+                            {hasDiscount
+                              ? `[할인가 ${opt.price.toLocaleString()}원 (정가 ${opt.originalPrice?.toLocaleString()}원)]`
+                              : `(${opt.price.toLocaleString()}원)`}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
 
