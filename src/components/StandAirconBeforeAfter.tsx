@@ -1,587 +1,373 @@
-import React, { useState } from 'react';
-import { Sparkles, ShieldAlert, CheckCircle2, AlertTriangle, ArrowRight, Layers, RefreshCw, ZoomIn } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight, X, ZoomIn, Image as ImageIcon, CheckCircle2, AlertTriangle, Sparkles, CalendarCheck } from 'lucide-react';
+import { useCMS } from '../context/CMSContext';
 
-// ==========================================
-// 1. LG WHISEN TOWER DISASSEMBLY DIAGRAM
-// ==========================================
-export const LgWhisenDisassemblyDiagram: React.FC<{ isBefore: boolean }> = ({ isBefore }) => {
-  return (
-    <svg viewBox="0 0 900 500" className="w-full h-full select-none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        {/* Background Radial Glow */}
-        <radialGradient id="lgBgGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor={isBefore ? '#450A0A' : '#064E3B'} stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#0B132B" stopOpacity="0.9" />
-        </radialGradient>
+interface StandAirconBeforeAfterProps {
+  onOpenBooking?: () => void;
+}
 
-        {/* Metal Tower Body Gradient */}
-        <linearGradient id="towerBodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#334155" />
-          <stop offset="30%" stopColor="#64748B" />
-          <stop offset="70%" stopColor="#475569" />
-          <stop offset="100%" stopColor="#1E293B" />
-        </linearGradient>
-
-        {/* Aluminum Heat Exchanger Fins */}
-        <pattern id="heatExchangerPattern" width="6" height="12" patternUnits="userSpaceOnUse">
-          <line x1="1" y1="0" x2="1" y2="12" stroke={isBefore ? '#574229' : '#94A3B8'} strokeWidth="1.5" />
-          <line x1="4" y1="0" x2="4" y2="12" stroke={isBefore ? '#3D2A18' : '#CBD5E1'} strokeWidth="1.5" />
-        </pattern>
-
-        {/* Fan Blade Metallic Gradient */}
-        <radialGradient id="fanBladeGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor={isBefore ? '#29180E' : '#E0F2FE'} />
-          <stop offset="60%" stopColor={isBefore ? '#1A0F08' : '#38BDF8'} />
-          <stop offset="100%" stopColor={isBefore ? '#0D0704' : '#0284C7'} />
-        </radialGradient>
-
-        {/* Mold Spots Pattern (For Before state) */}
-        <radialGradient id="moldSpot" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#111827" stopOpacity="0.9" />
-          <stop offset="70%" stopColor="#374151" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#052e16" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-
-      {/* Dark Studio Background */}
-      <rect width="900" height="500" fill="url(#lgBgGlow)" />
-      <grid width="900" height="500" />
-
-      {/* Floor Grid Stand Line */}
-      <ellipse cx="450" cy="460" rx="380" ry="25" fill="#000000" opacity="0.6" />
-
-      {/* ------------------------------------------- */}
-      {/* LEFT: DISASSEMBLED TOWER CHASSIS (BODY) */}
-      {/* ------------------------------------------- */}
-      <g transform="translate(180, 30)">
-        {/* Main Whisen Tower Outer Frame (Disassembled interior showing) */}
-        <rect x="80" y="20" width="160" height="400" rx="24" fill="url(#towerBodyGrad)" stroke="#64748B" strokeWidth="4" />
-        {/* Interior Cavity (Open Front Panel) */}
-        <rect x="92" y="32" width="136" height="376" rx="16" fill="#090D16" stroke="#334155" strokeWidth="2" />
-
-        {/* Heat Exchanger Coil Fins (Background inside) */}
-        <rect x="100" y="44" width="120" height="352" rx="8" fill="url(#heatExchangerPattern)" />
-
-        {/* BEFORE MOLD OVERLAY ON FINS */}
-        {isBefore && (
-          <g opacity="0.85">
-            <ellipse cx="140" cy="90" rx="35" ry="25" fill="url(#moldSpot)" />
-            <ellipse cx="170" cy="140" rx="25" ry="35" fill="url(#moldSpot)" />
-            <ellipse cx="130" cy="230" rx="40" ry="30" fill="url(#moldSpot)" />
-            <ellipse cx="165" cy="310" rx="30" ry="25" fill="url(#moldSpot)" />
-            <ellipse cx="125" cy="360" rx="35" ry="20" fill="url(#moldSpot)" />
-            {/* Dirty Mold Spots text tag */}
-            <rect x="105" y="180" width="110" height="22" rx="4" fill="#7F1D1D" opacity="0.9" />
-            <text x="160" y="195" fill="#FCA5A5" fontSize="11" fontWeight="bold" textAnchor="middle">
-              ⚠️ 곰팡이/유해균 99.9%
-            </text>
-          </g>
-        )}
-
-        {/* AFTER CLEAN HIGH-GLOSS OVERLAY ON FINS */}
-        {!isBefore && (
-          <g opacity="0.9">
-            <rect x="100" y="44" width="120" height="352" rx="8" fill="none" stroke="#38BDF8" strokeWidth="2" strokeDasharray="6 4" />
-            {/* Sparkles */}
-            <circle cx="120" cy="80" r="3" fill="#FFFFFF" />
-            <circle cx="190" cy="150" r="4" fill="#E0F2FE" />
-            <circle cx="130" cy="280" r="3" fill="#FFFFFF" />
-            <rect x="105" y="180" width="110" height="22" rx="4" fill="#065F46" opacity="0.9" />
-            <text x="160" y="195" fill="#A7F3D0" fontSize="11" fontWeight="bold" textAnchor="middle">
-              ✨ 150bar 고압 살균
-            </text>
-          </g>
-        )}
-
-        {/* TOP CIRCULAR BLOWER FAN ASSEMBLY */}
-        <g transform="translate(160, 110)">
-          <circle cx="0" cy="0" r="48" fill="#1E293B" stroke={isBefore ? '#7F1D1D' : '#0284C7'} strokeWidth="4" />
-          {/* Fan Blades (4 blades) */}
-          <path d="M 0 0 M -35 -10 C -10 -35 10 -35 35 -10 C 20 10 -20 10 -35 -10 Z" fill="url(#fanBladeGrad)" transform="rotate(0)" />
-          <path d="M 0 0 M -35 -10 C -10 -35 10 -35 35 -10 C 20 10 -20 10 -35 -10 Z" fill="url(#fanBladeGrad)" transform="rotate(90)" />
-          <path d="M 0 0 M -35 -10 C -10 -35 10 -35 35 -10 C 20 10 -20 10 -35 -10 Z" fill="url(#fanBladeGrad)" transform="rotate(180)" />
-          <path d="M 0 0 M -35 -10 C -10 -35 10 -35 35 -10 C 20 10 -20 10 -35 -10 Z" fill="url(#fanBladeGrad)" transform="rotate(270)" />
-          <circle cx="0" cy="0" r="14" fill={isBefore ? '#450A0A' : '#0F172A'} stroke={isBefore ? '#DC2626' : '#38BDF8'} strokeWidth="2" />
-        </g>
-
-        {/* BOTTOM CIRCULAR BLOWER FAN ASSEMBLY */}
-        <g transform="translate(160, 270)">
-          <circle cx="0" cy="0" r="48" fill="#1E293B" stroke={isBefore ? '#7F1D1D' : '#0284C7'} strokeWidth="4" />
-          {/* Fan Blades */}
-          <path d="M 0 0 M -35 -10 C -10 -35 10 -35 35 -10 C 20 10 -20 10 -35 -10 Z" fill="url(#fanBladeGrad)" transform="rotate(45)" />
-          <path d="M 0 0 M -35 -10 C -10 -35 10 -35 35 -10 C 20 10 -20 10 -35 -10 Z" fill="url(#fanBladeGrad)" transform="rotate(135)" />
-          <path d="M 0 0 M -35 -10 C -10 -35 10 -35 35 -10 C 20 10 -20 10 -35 -10 Z" fill="url(#fanBladeGrad)" transform="rotate(225)" />
-          <path d="M 0 0 M -35 -10 C -10 -35 10 -35 35 -10 C 20 10 -20 10 -35 -10 Z" fill="url(#fanBladeGrad)" transform="rotate(315)" />
-          <circle cx="0" cy="0" r="14" fill={isBefore ? '#450A0A' : '#0F172A'} stroke={isBefore ? '#DC2626' : '#38BDF8'} strokeWidth="2" />
-        </g>
-
-        {/* DRAIN CONDENSATE TRAY AT BOTTOM */}
-        <rect x="96" y="370" width="128" height="28" rx="6" fill={isBefore ? '#3B200B' : '#E2E8F0'} stroke={isBefore ? '#78350F' : '#94A3B8'} strokeWidth="2" />
-        <text x="160" y="388" fill={isBefore ? '#FDBA74' : '#0F172A'} fontSize="10" fontWeight="bold" textAnchor="middle">
-          {isBefore ? '⚠️ 물받이 드레인 이끼/슬러지' : '✨ 드레인 100% 살균 완료'}
-        </text>
-      </g>
-
-      {/* ------------------------------------------- */}
-      {/* RIGHT: REMOVED FRONT PANEL (EXPLODED VIEW) */}
-      {/* ------------------------------------------- */}
-      <g transform="translate(490, 45)">
-        {/* Exploded Connecting Lines */}
-        <line x1="-30" y1="80" x2="30" y2="80" stroke="#64748B" strokeWidth="2" strokeDasharray="4 4" />
-        <line x1="-30" y1="240" x2="30" y2="240" stroke="#64748B" strokeWidth="2" strokeDasharray="4 4" />
-        <line x1="-30" y1="360" x2="30" y2="360" stroke="#64748B" strokeWidth="2" strokeDasharray="4 4" />
-
-        {/* Detached Front Cover Panel */}
-        <rect x="30" y="10" width="150" height="390" rx="20" fill="url(#towerBodyGrad)" stroke="#94A3B8" strokeWidth="3" opacity="0.95" />
-
-        {/* Twin Whisen Air Outlets Circles */}
-        <circle cx="105" cy="95" r="42" fill="#0F172A" stroke="#38BDF8" strokeWidth="3" />
-        <circle cx="105" cy="95" r="28" fill="none" stroke="#0284C7" strokeWidth="2" />
-
-        <circle cx="105" cy="255" r="42" fill="#0F172A" stroke="#38BDF8" strokeWidth="3" />
-        <circle cx="105" cy="255" r="28" fill="none" stroke="#0284C7" strokeWidth="2" />
-
-        {/* LG Whisen Tower Brand Logo Badge */}
-        <rect x="65" y="360" width="80" height="18" rx="4" fill="#000000" />
-        <text x="105" y="373" fill="#FFFFFF" fontSize="10" fontWeight="black" textAnchor="middle" letterSpacing="1">
-          LG WHISEN
-        </text>
-      </g>
-
-      {/* ------------------------------------------- */}
-      {/* LABELS & CALLOUT ANNOTATIONS */}
-      {/* ------------------------------------------- */}
-      {/* Callout 1: Dual Fan */}
-      <g transform="translate(60, 110)">
-        <rect x="0" y="0" width="190" height="36" rx="8" fill={isBefore ? '#7F1D1D' : '#065F46'} stroke={isBefore ? '#EF4444' : '#10B981'} strokeWidth="1.5" />
-        <text x="12" y="16" fill="#FFFFFF" fontSize="11" fontWeight="bold">① 듀얼 송풍팬 (Blower Fan)</text>
-        <text x="12" y="29" fill={isBefore ? '#FCA5A5' : '#A7F3D0'} fontSize="10">
-          {isBefore ? '팬 날개 안쪽 곰팡이 착색' : '세척 후 날개 백색 살균'}
-        </text>
-        <path d="M 190 18 L 280 30" stroke={isBefore ? '#EF4444' : '#10B981'} strokeWidth="2" strokeDasharray="3 3" />
-      </g>
-
-      {/* Callout 2: Evaporator */}
-      <g transform="translate(60, 270)">
-        <rect x="0" y="0" width="190" height="36" rx="8" fill={isBefore ? '#7F1D1D' : '#065F46'} stroke={isBefore ? '#EF4444' : '#10B981'} strokeWidth="1.5" />
-        <text x="12" y="16" fill="#FFFFFF" fontSize="11" fontWeight="bold">② 열교환기 냉각핀 (Fins)</text>
-        <text x="12" y="29" fill={isBefore ? '#FCA5A5' : '#A7F3D0'} fontSize="10">
-          {isBefore ? '흡입막힘 & 악취 유발 원인' : '140℃ 스팀으로 악취 제거'}
-        </text>
-        <path d="M 190 18 L 280 30" stroke={isBefore ? '#EF4444' : '#10B981'} strokeWidth="2" strokeDasharray="3 3" />
-      </g>
-
-      {/* Title Header Badge inside Diagram */}
-      <g transform="translate(20, 20)">
-        <rect x="0" y="0" width="260" height="32" rx="8" fill="#0F172A" stroke="#334155" strokeWidth="1.5" />
-        <text x="15" y="21" fill="#F8FAFC" fontSize="12" fontWeight="black">
-          LG 휘센 타워 스탠드 [분해 세척 {isBefore ? '전 ⚠️' : '후 ✨'}]
-        </text>
-      </g>
-    </svg>
-  );
+// Default part descriptions if missing
+const DEFAULT_PARTS: Record<string, string> = {
+  '벽걸이 에어컨': '송풍팬(블로워팬) 분해 전·후',
+  '스탠드 에어컨': '열교환기(냉각핀) 분해 전·후',
+  '시스템 1Way': '드레인팬 및 송풍팬 분해 전·후',
+  '시스템 4Way': '내부 종합 분해 전·후',
+  '세탁기': '세탁조(스텐튜브) 분해 전·후',
+  '건조기': '콘덴서 및 팬 분해 전·후',
+  '공기청정기': '필터 및 내부 분해 전·후',
+  '제습기': '열교환기 분해 전·후',
+  '냉장고': '냉각팬 및 내부 분해 전·후',
 };
 
-// ==========================================
-// 2. SAMSUNG BESPOKE 3-CIRCULATOR STAND DIAGRAM
-// ==========================================
-export const SamsungBespokeDisassemblyDiagram: React.FC<{ isBefore: boolean }> = ({ isBefore }) => {
-  return (
-    <svg viewBox="0 0 900 500" className="w-full h-full select-none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="samsungBgGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor={isBefore ? '#450A0A' : '#1E3A8A'} stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#0B132B" stopOpacity="0.9" />
-        </radialGradient>
+export const StandAirconBeforeAfter: React.FC<StandAirconBeforeAfterProps> = ({ onOpenBooking }) => {
+  const { cmsData } = useCMS();
+  const rawWorkCases = cmsData.beforeAfterCases;
+  
+  // Sort work cases by order field
+  const workCases = [...rawWorkCases].sort((a, b) => (a.order || 0) - (b.order || 0));
 
-        <linearGradient id="bespokeBody" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#1E293B" />
-          <stop offset="50%" stopColor="#475569" />
-          <stop offset="100%" stopColor="#0F172A" />
-        </linearGradient>
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [zoomIndex, setZoomIndex] = useState<number | null>(null);
 
-        <pattern id="microHolePattern" width="4" height="4" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="0.8" fill={isBefore ? '#7F1D1D' : '#38BDF8'} opacity="0.6" />
-        </pattern>
-      </defs>
+  // Category filter options
+  const categoriesList = ['all', '벽걸이 에어컨', '스탠드 에어컨', '시스템 1Way', '시스템 4Way', '세탁기', '건조기', '공기청정기', '제습기', '냉장고'];
 
-      <rect width="900" height="500" fill="url(#samsungBgGlow)" />
+  const filteredCases = selectedCategory === 'all'
+    ? workCases
+    : workCases.filter(c => c.category === selectedCategory || c.title.includes(selectedCategory));
 
-      {/* Main Tower Body */}
-      <g transform="translate(350, 25)">
-        <rect x="0" y="0" width="200" height="420" rx="30" fill="url(#bespokeBody)" stroke="#3B82F6" strokeWidth="3" />
-
-        {/* 3 Circulator Vent Holes (Top, Mid, Bottom) */}
-        {/* Top Vent */}
-        <circle cx="100" cy="80" r="42" fill="#090D16" stroke={isBefore ? '#991B1B' : '#0284C7'} strokeWidth="4" />
-        <circle cx="100" cy="80" r="32" fill="none" stroke={isBefore ? '#7F1D1D' : '#38BDF8'} strokeWidth="2" strokeDasharray="5 3" />
-        <circle cx="100" cy="80" r="10" fill={isBefore ? '#450A0A' : '#E0F2FE'} />
-
-        {/* Mid Vent */}
-        <circle cx="100" cy="210" r="42" fill="#090D16" stroke={isBefore ? '#991B1B' : '#0284C7'} strokeWidth="4" />
-        <circle cx="100" cy="210" r="32" fill="none" stroke={isBefore ? '#7F1D1D' : '#38BDF8'} strokeWidth="2" strokeDasharray="5 3" />
-        <circle cx="100" cy="210" r="10" fill={isBefore ? '#450A0A' : '#E0F2FE'} />
-
-        {/* Bottom Vent */}
-        <circle cx="100" cy="340" r="42" fill="#090D16" stroke={isBefore ? '#991B1B' : '#0284C7'} strokeWidth="4" />
-        <circle cx="100" cy="340" r="32" fill="none" stroke={isBefore ? '#7F1D1D' : '#38BDF8'} strokeWidth="2" strokeDasharray="5 3" />
-        <circle cx="100" cy="340" r="10" fill={isBefore ? '#450A0A' : '#E0F2FE'} />
-
-        {/* Samsung BESPOKE Logo */}
-        <rect x="55" y="392" width="90" height="16" rx="4" fill="#000000" />
-        <text x="100" y="404" fill="#60A5FA" fontSize="9" fontWeight="bold" textAnchor="middle">
-          BESPOKE Q9000
-        </text>
-      </g>
-
-      {/* Detached Microhole Front Panel */}
-      <g transform="translate(600, 35)">
-        <rect x="0" y="0" width="160" height="400" rx="20" fill="url(#microHolePattern)" stroke="#64748B" strokeWidth="2" />
-        <text x="80" y="200" fill="#FFFFFF" fontSize="12" fontWeight="bold" textAnchor="middle">
-          무풍 마이크로홀 패널
-        </text>
-        <text x="80" y="220" fill={isBefore ? '#FCA5A5' : '#6EE7B7'} fontSize="10" textAnchor="middle">
-          {isBefore ? '(미세 홀 입구 곰팡이 착색)' : '(백플러싱 관통 살균)'}
-        </text>
-      </g>
-
-      {/* Callouts */}
-      <g transform="translate(50, 150)">
-        <rect x="0" y="0" width="240" height="60" rx="10" fill={isBefore ? '#7F1D1D' : '#065F46'} stroke={isBefore ? '#EF4444' : '#10B981'} strokeWidth="2" />
-        <text x="15" y="24" fill="#FFFFFF" fontSize="12" fontWeight="bold">삼성 3구 무풍 서큘레이터</text>
-        <text x="15" y="44" fill={isBefore ? '#FCA5A5' : '#A7F3D0'} fontSize="11">
-          {isBefore ? '3개 원형 팬 하우징 찌든때 누적' : '3개 모듈 분리 후 고압 정밀 세척'}
-        </text>
-      </g>
-
-      <g transform="translate(20, 20)">
-        <rect x="0" y="0" width="280" height="32" rx="8" fill="#0F172A" stroke="#334155" strokeWidth="1.5" />
-        <text x="15" y="21" fill="#F8FAFC" fontSize="12" fontWeight="black">
-          삼성 비스포크 Q9000 [무풍 분해 {isBefore ? '전 ⚠️' : '후 ✨'}]
-        </text>
-      </g>
-    </svg>
-  );
-};
-
-// ==========================================
-// 3. BLOWER FAN & HEAT EXCHANGER CLOSE-UP DIAGRAM
-// ==========================================
-export const StandFanDetailDiagram: React.FC<{ isBefore: boolean }> = ({ isBefore }) => {
-  return (
-    <svg viewBox="0 0 900 500" className="w-full h-full select-none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="900" height="500" fill="#090D16" />
-
-      {/* Enlarged Blower Fan Cylinder */}
-      <g transform="translate(150, 80)">
-        <circle cx="180" cy="170" r="140" fill="#1E293B" stroke={isBefore ? '#991B1B' : '#0284C7'} strokeWidth="6" />
-
-        {/* Multi-blade turbine fins */}
-        {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((angle, i) => (
-          <line
-            key={i}
-            x1="180"
-            y1="170"
-            x2={180 + 130 * Math.cos((angle * Math.PI) / 180)}
-            y2={170 + 130 * Math.sin((angle * Math.PI) / 180)}
-            stroke={isBefore ? '#7F1D1D' : '#38BDF8'}
-            strokeWidth="5"
-          />
-        ))}
-
-        <circle cx="180" cy="170" r="40" fill={isBefore ? '#450A0A' : '#E0F2FE'} />
-
-        {/* Dirty Mold Spots overlay */}
-        {isBefore && (
-          <g opacity="0.9">
-            <circle cx="140" cy="120" r="18" fill="#450A0A" stroke="#EF4444" strokeWidth="2" />
-            <circle cx="220" cy="190" r="22" fill="#450A0A" stroke="#EF4444" strokeWidth="2" />
-            <circle cx="160" cy="230" r="16" fill="#450A0A" opacity="0.8" />
-          </g>
-        )}
-      </g>
-
-      {/* Explanatory Callout Box */}
-      <g transform="translate(520, 120)">
-        <rect x="0" y="0" width="320" height="240" rx="16" fill={isBefore ? '#450A0A' : '#064E3B'} stroke={isBefore ? '#DC2626' : '#10B981'} strokeWidth="2" />
-        <text x="20" y="40" fill="#FFFFFF" fontSize="16" fontWeight="black">
-          {isBefore ? '⚠️ 분해 전: 송풍팬 안쪽 곰팡이' : '✨ 분해 후: 신품 수준 살균완료'}
-        </text>
-        <text x="20" y="80" fill={isBefore ? '#FCA5A5' : '#A7F3D0'} fontSize="13">
-          {isBefore ? '• 송풍팬 날개 안쪽 회색/검은 곰팡이 흡착' : '• 150bar 초고압수로 묵은 때 100% 세척'}
-        </text>
-        <text x="20" y="110" fill={isBefore ? '#FCA5A5' : '#A7F3D0'} fontSize="13">
-          {isBefore ? '• 에어컨 가동 시 시큼한 걸레 냄새 유발' : '• 140℃ 스팀으로 유해세균 및 악취 제거'}
-        </text>
-        <text x="20" y="140" fill={isBefore ? '#FCA5A5' : '#A7F3D0'} fontSize="13">
-          {isBefore ? '• 호흡기 비염 및 아토피 유발 원인포자' : '• 친환경 피톤치드 코팅 소독 완료'}
-        </text>
-      </g>
-    </svg>
-  );
-};
-
-// ==========================================
-// MAIN STAND AIRCON BEFORE & AFTER COMPONENT
-// ==========================================
-export const StandAirconBeforeAfter: React.FC = () => {
-  const [selectedModelId, setSelectedModelId] = useState<string>('lg-whisen-stand');
-  const [viewMode, setViewMode] = useState<'before' | 'after' | 'split'>('before');
-
-  const currentItem = [
-    {
-      id: 'lg-whisen-stand',
-      modelName: 'LG 휘센 타워/듀얼 스탠드 에어컨',
-      brand: 'LG',
-      beforeTitle: 'LG 휘센 스탠드 완전분해 - 듀얼 송풍팬/드레인 곰팡이',
-      beforeDesc: '전면 패널 탈거 후 듀얼 송풍팬 및 물받이 드레인에 검은색 누적 곰팡이와 비염 원인 유해세균 서식',
-      afterTitle: 'LG 휘센 스탠드 150bar 고압수 세척 & 140℃ 스팀 소독 완료',
-      afterDesc: '듀얼 팬과 드레인판 100% 완전 분해 고압 세척으로 맑고 깨끗한 숲속 바람 복원',
-      parts: [
-        { name: '듀얼 송풍팬 (Blower Fan)', beforeStatus: '검은 곰팡이 덩어리 & 먼지 고착', afterStatus: '투명 정밀 세척 100% 살균' },
-        { name: '열교환기 냉각핀 (Evaporator)', beforeStatus: '찌든 먼지 및 시큼한 냄새 발산', afterStatus: '은색 알루미늄 핀 반짝임 복원' },
-        { name: '드레인 물받이 (Drain Pan)', beforeStatus: '갈색 이끼 물때 슬러지 축적', afterStatus: '하얀 순정 상태 완벽 세척' },
-      ],
-    },
-    {
-      id: 'samsung-bespoke-stand',
-      modelName: '삼성 비스포크 Q9000 무풍 스탠드 에어컨',
-      brand: 'Samsung',
-      beforeTitle: '삼성 비스포크 무풍 스탠드 - 마이크로홀 & 3구 팬 하우징 오염',
-      beforeDesc: '무풍 홀 내부 습기로 인한 검은 곰팡이 점 착색 및 3구 서큘레이터 팬 가스켓 찌꺼기',
-      afterTitle: '삼성 비스포크 무풍 홀 백플러싱 & UV 피톤치드 코팅 완료',
-      afterDesc: '3구 팬 모듈 분해 후 친환경 세제 고압수 직사로 미세 곰팡이 포자까지 99.9% 멸균',
-      parts: [
-        { name: '무풍 패널 마이크로홀', beforeStatus: '홀 입구 곰팡이 포자 번식', afterStatus: '초고압 고온스팀 완전 관통 세척' },
-        { name: '3구 서큘레이터 송풍모듈', beforeStatus: '회전 날개 묵은 먼지 덩어리', afterStatus: '모듈 분리 멸균 소독' },
-        { name: '하부 토출구 가림판', beforeStatus: '습기 응결 곰팡이 착색', afterStatus: '피톤치드 항균 코팅 완성' },
-      ],
-    },
-    {
-      id: 'stand-fan-detail',
-      modelName: '송풍팬 & 열교환기 정밀 확대 비교',
-      brand: 'Common',
-      beforeTitle: '스탠드 에어컨 송풍팬 고압 세척 전 (곰팡이 99.9%)',
-      beforeDesc: '에어컨 틀었을 때 쉰내와 기침을 유발하는 송풍팬 날개 안쪽 곰팡이 흡착 상태',
-      afterTitle: '스탠드 에어컨 송풍팬 고압 세척 후 (신품 수준 살균)',
-      afterDesc: '친환경 전용 세제로 묵은 때를 불린 후 150bar 고압수로 박멸한 청결 상태',
-      parts: [
-        { name: '송풍팬 안쪽 블레이드', beforeStatus: '곰팡이 솜털 및 먼지 점착', afterStatus: '매끈한 원래 표면 복원' },
-        { name: '알루미늄 열교환기(핀)', beforeStatus: '공기 흡입막힘 & 냉방 저하', afterStatus: '열교환 효율 30% 향상' },
-      ],
-    },
-  ].find((item) => item.id === selectedModelId)!;
-
-  const renderDiagram = (isBefore: boolean) => {
-    if (selectedModelId === 'lg-whisen-stand') {
-      return <LgWhisenDisassemblyDiagram isBefore={isBefore} />;
-    } else if (selectedModelId === 'samsung-bespoke-stand') {
-      return <SamsungBespokeDisassemblyDiagram isBefore={isBefore} />;
+  const handleBookingClick = () => {
+    if (onOpenBooking) {
+      onOpenBooking();
     } else {
-      return <StandFanDetailDiagram isBefore={isBefore} />;
+      const element = document.getElementById('services');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
+  // Keyboard navigation for Lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (zoomIndex === null) return;
+      if (e.key === 'Escape') setZoomIndex(null);
+      if (e.key === 'ArrowLeft') {
+        setZoomIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : filteredCases.length - 1));
+      }
+      if (e.key === 'ArrowRight') {
+        setZoomIndex((prev) => (prev !== null && prev < filteredCases.length - 1 ? prev + 1 : 0));
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [zoomIndex, filteredCases.length]);
+
+  const activeZoomItem = zoomIndex !== null ? filteredCases[zoomIndex] : null;
+
   return (
-    <div className="bg-slate-900 text-white rounded-3xl p-4 sm:p-6 shadow-2xl border border-slate-800 space-y-5">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
-        <div>
-          <div className="flex items-center space-x-2">
-            <span className="bg-blue-600/30 text-blue-400 border border-blue-500/40 text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center space-x-1">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>실제 분해 세척 현장 정밀 검증</span>
-            </span>
-            <span className="text-xs text-slate-400 font-medium">LG 휘센 타워 / 삼성 비스포크 분해 도면</span>
+    <section className="bg-slate-50/70 py-12 sm:py-16 md:py-20 rounded-[32px] border border-blue-100/80 shadow-xl shadow-blue-950/5 my-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+        
+        {/* SECTION HEADER */}
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-black">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>100% 현장 분해세척 실제 작업 비교</span>
           </div>
-          <h3 className="text-lg sm:text-xl font-black text-white mt-1">
-            스탠드 에어컨 완전분해 세척 전/후 비교
-          </h3>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
+            실제 작업 전·후 비교 <span className="text-blue-600">갤러리</span>
+          </h2>
+          <p className="text-sm sm:text-base text-gray-600 font-medium">
+            전문 마스터가 직접 완전분해 세척한 100% 현장 부위별 비포&애프터 사진입니다.
+          </p>
         </div>
 
-        {/* View Mode Switcher (Before / After / Split Side-by-Side) */}
-        <div className="bg-slate-800 p-1.5 rounded-xl flex space-x-1 text-xs self-start sm:self-auto">
-          <button
-            onClick={() => setViewMode('before')}
-            className={`px-3 py-1.5 rounded-lg font-extrabold transition-all flex items-center space-x-1 ${
-              viewMode === 'before'
-                ? 'bg-red-600 text-white shadow-lg shadow-red-900/40 ring-2 ring-red-400'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <AlertTriangle className="w-3.5 h-3.5 text-amber-300" />
-            <span>세척 전</span>
-          </button>
-
-          <button
-            onClick={() => setViewMode('after')}
-            className={`px-3 py-1.5 rounded-lg font-extrabold transition-all flex items-center space-x-1 ${
-              viewMode === 'after'
-                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/40 ring-2 ring-emerald-400'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-200" />
-            <span>세척 후</span>
-          </button>
-
-          <button
-            onClick={() => setViewMode('split')}
-            className={`px-3 py-1.5 rounded-lg font-extrabold transition-all flex items-center space-x-1 ${
-              viewMode === 'split'
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/40 ring-2 ring-blue-400'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5 text-sky-200" />
-            <span>나란히 비교</span>
-          </button>
+        {/* CATEGORY FILTER TABS */}
+        <div className="flex items-center justify-start sm:justify-center overflow-x-auto gap-2 pb-2 scrollbar-none">
+          {categoriesList.map((cat) => {
+            const isActive = selectedCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                  isActive
+                    ? 'bg-blue-600 text-white shadow-blue-500/20 shadow-lg scale-105'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                }`}
+              >
+                {cat === 'all' ? '전체 보기' : cat}
+              </button>
+            );
+          })}
         </div>
-      </div>
 
-      {/* Model Selection Tabs */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-        <button
-          onClick={() => setSelectedModelId('lg-whisen-stand')}
-          className={`p-3 rounded-2xl text-left border text-xs font-bold transition-all flex items-center justify-between ${
-            selectedModelId === 'lg-whisen-stand'
-              ? 'bg-gradient-to-r from-rose-950/80 to-slate-900 border-rose-500 text-white shadow-md ring-1 ring-rose-400'
-              : 'bg-slate-800/60 border-slate-700/60 text-slate-300 hover:bg-slate-800'
-          }`}
-        >
-          <div>
-            <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800 mr-2">
-              LG Whisen
-            </span>
-            <div className="text-sm font-extrabold text-white mt-0.5">LG 휘센 타워 스탠드</div>
-          </div>
-          {selectedModelId === 'lg-whisen-stand' && <span className="w-2.5 h-2.5 rounded-full bg-rose-400 animate-ping" />}
-        </button>
+        {/* 3-COLUMN RESPONSIVE HORIZONTAL CARD GRID */}
+        {/* Mobile: 1 per row (grid-cols-1), Tablet: 2 per row (md:grid-cols-2), PC: 3 per row (lg:grid-cols-3) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {filteredCases.map((item, idx) => {
+            const defaultBulletPoints = item.afterPoints && item.afterPoints.length > 0
+              ? item.afterPoints
+              : ['곰팡이 제거', '고압세척', '살균 완료', '냄새 제거'];
 
-        <button
-          onClick={() => setSelectedModelId('samsung-bespoke-stand')}
-          className={`p-3 rounded-2xl text-left border text-xs font-bold transition-all flex items-center justify-between ${
-            selectedModelId === 'samsung-bespoke-stand'
-              ? 'bg-gradient-to-r from-blue-950/80 to-slate-900 border-blue-500 text-white shadow-md ring-1 ring-blue-400'
-              : 'bg-slate-800/60 border-slate-700/60 text-slate-300 hover:bg-slate-800'
-          }`}
-        >
-          <div>
-            <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-blue-950 text-sky-300 border border-blue-800 mr-2">
-              Samsung
-            </span>
-            <div className="text-sm font-extrabold text-white mt-0.5">삼성 비스포크 Q9000</div>
-          </div>
-          {selectedModelId === 'samsung-bespoke-stand' && <span className="w-2.5 h-2.5 rounded-full bg-sky-400 animate-ping" />}
-        </button>
+            const specificPartLabel = item.altText?.includes('분해')
+              ? item.altText
+              : DEFAULT_PARTS[item.category] || '분해 세척 전·후';
 
-        <button
-          onClick={() => setSelectedModelId('stand-fan-detail')}
-          className={`p-3 rounded-2xl text-left border text-xs font-bold transition-all flex items-center justify-between ${
-            selectedModelId === 'stand-fan-detail'
-              ? 'bg-gradient-to-r from-indigo-950/80 to-slate-900 border-indigo-500 text-white shadow-md ring-1 ring-indigo-400'
-              : 'bg-slate-800/60 border-slate-700/60 text-slate-300 hover:bg-slate-800'
-          }`}
-        >
-          <div>
-            <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800 mr-2">
-              정밀 확대
-            </span>
-            <div className="text-sm font-extrabold text-white mt-0.5">송풍팬 & 냉각핀 확대</div>
-          </div>
-          {selectedModelId === 'stand-fan-detail' && <span className="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-ping" />}
-        </button>
-      </div>
+            return (
+              <div
+                key={item.id}
+                className="bg-white rounded-[24px] p-5 border border-gray-200/90 shadow-md shadow-blue-900/5 hover:shadow-2xl hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              >
+                {/* ① TOP - SERVICE NAME & SPECIFIC PART BADGE */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+                      {item.category}
+                    </span>
+                    <span className="text-xs font-extrabold text-blue-600/80 bg-slate-100 px-2.5 py-0.5 rounded-md">
+                      {specificPartLabel}
+                    </span>
+                  </div>
 
-      {/* Main Visual Display Area */}
-      {viewMode === 'split' ? (
-        /* Side-By-Side Split View */
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2 text-xs font-extrabold text-red-400">
-              <ShieldAlert className="w-4 h-4" />
-              <span>[분해 직후] 세척 전 곰팡이 서식 상태</span>
-            </div>
-            <div className="aspect-[16/10] rounded-2xl overflow-hidden border border-red-900/60 bg-slate-950 p-2 shadow-inner">
-              {renderDiagram(true)}
-            </div>
-          </div>
+                  <h3 className="font-extrabold text-gray-900 text-base sm:text-lg group-hover:text-blue-600 transition-colors leading-snug">
+                    {item.title}
+                  </h3>
 
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2 text-xs font-extrabold text-emerald-400">
-              <CheckCircle2 className="w-4 h-4" />
-              <span>[고압세척 후] 100% 완벽 살균 소독 상태</span>
-            </div>
-            <div className="aspect-[16/10] rounded-2xl overflow-hidden border border-emerald-900/60 bg-slate-950 p-2 shadow-inner">
-              {renderDiagram(false)}
-            </div>
-          </div>
-        </div>
-      ) : (
-        /* Single View Mode (Before or After) */
-        <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden border border-slate-700 bg-slate-950 p-2 sm:p-4 shadow-inner">
-          {renderDiagram(viewMode === 'before')}
+                  {/* ② CENTER - BEFORE PHOTO (LEFT) & AFTER PHOTO (RIGHT) */}
+                  <div
+                    onClick={() => setZoomIndex(idx)}
+                    className="relative p-2 bg-slate-50/80 rounded-2xl border border-gray-200/80 cursor-pointer overflow-hidden group/img transition-all hover:bg-blue-50/40"
+                  >
+                    <div className="grid grid-cols-2 gap-2 relative">
+                      
+                      {/* Left: 청소 전 사진 (BEFORE) */}
+                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 border border-gray-200/60 shadow-inner">
+                        {item.beforeImage ? (
+                          <img
+                            src={item.beforeImage}
+                            alt={`${item.title} 청소 전`}
+                            className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center p-2 text-center bg-gray-100 text-gray-400">
+                            <ImageIcon className="w-6 h-6 mb-1 text-gray-300" />
+                            <span className="text-[10px] font-bold">실제 작업 사진</span>
+                          </div>
+                        )}
+                        <span className="absolute top-2 left-2 z-10 bg-rose-600/90 backdrop-blur-sm text-white font-black text-[10px] px-2 py-0.5 rounded-md shadow flex items-center space-x-0.5">
+                          <AlertTriangle className="w-2.5 h-2.5" />
+                          <span>청소 전</span>
+                        </span>
+                      </div>
 
-          {/* Bottom Banner Note */}
-          <div className="absolute bottom-3 left-3 right-3 sm:right-auto max-w-xl">
-            <div
-              className={`p-3 rounded-xl backdrop-blur-md border shadow-lg ${
-                viewMode === 'before'
-                  ? 'bg-red-950/90 border-red-500/60 text-red-100'
-                  : 'bg-emerald-950/90 border-emerald-500/60 text-emerald-100'
-              }`}
-            >
-              <div className="flex items-center space-x-2 font-black text-xs sm:text-sm">
-                {viewMode === 'before' ? (
-                  <>
-                    <ShieldAlert className="w-4 h-4 text-red-400 flex-shrink-0" />
-                    <span>[분해 직후 현장] {currentItem.beforeTitle}</span>
-                  </>
-                ) : (
-                  <>
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                    <span>[살균 세척 완수] {currentItem.afterTitle}</span>
-                  </>
-                )}
+                      {/* Right: 청소 후 사진 (AFTER) */}
+                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 border border-gray-200/60 shadow-inner">
+                        {item.afterImage ? (
+                          <img
+                            src={item.afterImage}
+                            alt={`${item.title} 청소 후`}
+                            className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center p-2 text-center bg-gray-100 text-gray-400">
+                            <ImageIcon className="w-6 h-6 mb-1 text-gray-300" />
+                            <span className="text-[10px] font-bold">실제 작업 사진</span>
+                          </div>
+                        )}
+                        <span className="absolute top-2 right-2 z-10 bg-blue-600/90 backdrop-blur-sm text-white font-black text-[10px] px-2 py-0.5 rounded-md shadow flex items-center space-x-0.5">
+                          <CheckCircle2 className="w-2.5 h-2.5" />
+                          <span>청소 후</span>
+                        </span>
+                      </div>
+
+                      {/* Center Divider Icon / Arrow */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-blue-600 text-white shadow-xl rounded-full px-2.5 py-1 text-[10px] font-black border-2 border-white flex items-center space-x-1">
+                        <span>BEFORE</span>
+                        <ArrowRight className="w-3 h-3 text-amber-300" />
+                        <span>AFTER</span>
+                      </div>
+
+                    </div>
+
+                    {/* Zoom Hint Overlay */}
+                    <div className="mt-2 text-center flex items-center justify-center space-x-1 text-xs text-blue-600 font-bold group-hover/img:underline">
+                      <ZoomIn className="w-3.5 h-3.5" />
+                      <span>클릭하여 고화질 크게 보기 (Lightbox)</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ③ BOTTOM - SIMPLE DESCRIPTION BULLETS & DIRECT BOOKING ACTION BUTTON */}
+                <div className="pt-4 mt-4 border-t border-gray-100 space-y-3">
+                  {/* Bullet Tags: ✔ 곰팡이 제거 ✔ 고압세척 ✔ 살균 완료 ✔ 냄새 제거 */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {defaultBulletPoints.map((pt, pIdx) => (
+                      <span
+                        key={pIdx}
+                        className="inline-flex items-center text-xs font-bold text-gray-800 bg-blue-50/80 px-2.5 py-1 rounded-lg border border-blue-100/60"
+                      >
+                        <span className="text-blue-600 font-extrabold mr-1">✔</span>
+                        <span>{pt.replace(/^✔\s*/, '')}</span>
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Clear Action Button: [이 서비스 예약하기] */}
+                  <button
+                    onClick={handleBookingClick}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-1.5 shadow-md shadow-blue-500/10 active:scale-[0.98] group/btn"
+                  >
+                    <CalendarCheck className="w-4 h-4" />
+                    <span>이 상품 예약하기</span>
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
+                </div>
               </div>
-              <p className="text-[11px] sm:text-xs text-slate-300 mt-1 leading-relaxed">
-                {viewMode === 'before' ? currentItem.beforeDesc : currentItem.afterDesc}
-              </p>
+            );
+          })}
+        </div>
+
+        {/* BOTTOM GLOBAL BUTTON */}
+        <div className="text-center pt-2">
+          <button
+            onClick={handleBookingClick}
+            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 bg-slate-900 hover:bg-blue-600 text-white font-black text-base sm:text-lg px-8 py-3.5 rounded-2xl transition-all shadow-xl active:scale-[0.98] group"
+          >
+            <CalendarCheck className="w-5 h-5 text-amber-400" />
+            <span>원하는 서비스 견적 확인 및 바로 예약하기</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-amber-400" />
+          </button>
+        </div>
+
+      </div>
+
+      {/* LIGHTBOX ENLARGED MODAL */}
+      {activeZoomItem && zoomIndex !== null && (
+        <div
+          onClick={() => setZoomIndex(null)}
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 cursor-pointer animate-fade-in"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-4xl w-full bg-slate-900 rounded-3xl p-5 sm:p-6 space-y-4 shadow-2xl border border-slate-800 text-white"
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div className="flex items-center space-x-2">
+                <span className="bg-blue-600 text-white font-black text-xs px-3 py-1 rounded-full">
+                  {activeZoomItem.category}
+                </span>
+                <h4 className="font-extrabold text-white text-base sm:text-lg">
+                  {activeZoomItem.title}
+                </h4>
+              </div>
+              <button
+                onClick={() => setZoomIndex(null)}
+                className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-full transition-colors"
+                aria-label="닫기 (ESC)"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Side-by-Side Photo View */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <span className="text-xs font-bold text-rose-400 bg-rose-950/80 px-2.5 py-1 rounded-lg border border-rose-800 inline-block">
+                  청소 전 (BEFORE)
+                </span>
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-slate-800">
+                  {activeZoomItem.beforeImage ? (
+                    <img
+                      src={activeZoomItem.beforeImage}
+                      alt={`${activeZoomItem.title} 청소 전`}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-slate-500">
+                      <ImageIcon className="w-10 h-10 mb-2" />
+                      <span>실제 현장 사진 업로드 준비중</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <span className="text-xs font-bold text-blue-400 bg-blue-950/80 px-2.5 py-1 rounded-lg border border-blue-800 inline-block">
+                  청소 후 (AFTER)
+                </span>
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-slate-800">
+                  {activeZoomItem.afterImage ? (
+                    <img
+                      src={activeZoomItem.afterImage}
+                      alt={`${activeZoomItem.title} 청소 후`}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-slate-500">
+                      <ImageIcon className="w-10 h-10 mb-2" />
+                      <span>실제 현장 사진 업로드 준비중</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Bottom Bullet Points & Action */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800">
+              <div className="flex flex-wrap gap-2">
+                {(activeZoomItem.afterPoints || ['곰팡이 제거', '고압세척', '살균 완료', '냄새 제거']).map((pt, pIdx) => (
+                  <span key={pIdx} className="text-xs font-bold text-blue-300 bg-blue-950/60 px-3 py-1 rounded-lg border border-blue-800/60">
+                    ✔ {pt.replace(/^✔\s*/, '')}
+                  </span>
+                ))}
+              </div>
+
+              <button
+                onClick={() => {
+                  setZoomIndex(null);
+                  handleBookingClick();
+                }}
+                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold px-5 py-2.5 rounded-xl transition-all flex items-center justify-center space-x-1.5 shrink-0"
+              >
+                <CalendarCheck className="w-4 h-4" />
+                <span>이 서비스 바로 예약하기</span>
+              </button>
+            </div>
+
+            {/* Navigation Buttons (< >) */}
+            <div className="flex items-center justify-between pt-2 border-t border-slate-800">
+              <button
+                onClick={() => setZoomIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : filteredCases.length - 1))}
+                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm rounded-xl flex items-center space-x-1 transition-colors"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                <span>이전 사례</span>
+              </button>
+
+              <span className="text-xs font-bold text-slate-400">
+                {zoomIndex + 1} / {filteredCases.length}
+              </span>
+
+              <button
+                onClick={() => setZoomIndex((prev) => (prev !== null && prev < filteredCases.length - 1 ? prev + 1 : 0))}
+                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm rounded-xl flex items-center space-x-1 transition-colors"
+              >
+                <span>다음 사례</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>
       )}
-
-      {/* Disassembled Parts Breakdown Table */}
-      <div className="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 space-y-2.5">
-        <div className="flex items-center justify-between text-xs font-bold text-slate-300">
-          <span className="flex items-center space-x-1.5">
-            <Layers className="w-4 h-4 text-blue-400" />
-            <span>{currentItem.modelName} 부품별 세척 정밀 비교</span>
-          </span>
-          <span className="text-[10px] text-slate-500">* 100% 완전 분해 세척 보증</span>
-        </div>
-
-        <div className="grid grid-cols-1 divide-y divide-slate-800 text-xs">
-          {currentItem.parts.map((part, idx) => (
-            <div key={idx} className="py-2.5 flex items-center justify-between gap-2">
-              <span className="font-bold text-slate-200 min-w-[140px]">{part.name}</span>
-              <div className="flex items-center space-x-2 text-right">
-                <span className="text-red-400/90 font-medium line-through text-[11px] hidden sm:inline">
-                  {part.beforeStatus}
-                </span>
-                <ArrowRight className="w-3 h-3 text-slate-600 hidden sm:inline" />
-                <span className="text-emerald-400 font-extrabold bg-emerald-950/60 px-2.5 py-0.5 rounded border border-emerald-800/50">
-                  {part.afterStatus}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 
 export default StandAirconBeforeAfter;
-

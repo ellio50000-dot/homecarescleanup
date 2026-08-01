@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShieldCheck, Phone, CheckCircle2, Sparkles, Star, Calendar, Clock, Award, ArrowRight, Zap } from 'lucide-react';
 import { PHONE_NUMBERS } from '../data/mockData';
+import { useCMS } from '../context/CMSContext';
 
 interface HeroProps {
   onOpenBooking: (applianceId?: string) => void;
@@ -8,6 +9,8 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenPartnerModal }) => {
+  const { cmsData } = useCMS();
+  const banner = cmsData.banner;
   return (
     <section id="hero" className="relative bg-gradient-to-b from-slate-900 via-blue-950 to-indigo-950 text-white overflow-hidden py-12 lg:py-20">
       {/* Subtle Background Pattern */}
@@ -18,6 +21,47 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenPartnerModal })
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Prominent Regional Service Notice Banner (High Visibility Colors) */}
+        <div className="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 text-slate-950 p-4 sm:p-5 rounded-2xl shadow-2xl border-2 border-yellow-200 mb-8 transition-all hover:shadow-amber-500/20">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+            <div className="space-y-1.5 flex-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="bg-red-600 text-white font-black text-xs px-3 py-0.5 rounded-full shadow-sm animate-pulse flex items-center space-x-1">
+                  <Zap className="w-3.5 h-3.5 text-yellow-300" />
+                  <span>전북 전지역 출장가능</span>
+                </span>
+                <span className="bg-slate-900 text-amber-300 font-extrabold text-xs px-2.5 py-0.5 rounded-full">
+                  실시간 예약 & 무료 상담
+                </span>
+              </div>
+              <p className="text-base sm:text-lg lg:text-xl font-black text-slate-950 tracking-tight leading-snug">
+                전북 전지역 에어컨 · 세탁기 · 건조기 · 공기청정기 · 제습기 · 냉장고 분해청소 전문업체
+              </p>
+              <p className="text-xs sm:text-sm font-bold text-slate-800 flex flex-wrap items-center gap-1.5">
+                <span className="text-red-700 font-black">📍 출장 가능 지역:</span>
+                <span>전주 · 익산 · 군산 · 김제 · 정읍 · 남원 전북권 전지역 출장 가능</span>
+              </p>
+            </div>
+            <div className="flex items-center gap-2.5 w-full sm:w-auto flex-shrink-0">
+              <button
+                onClick={() => onOpenBooking()}
+                className="flex-1 sm:flex-none px-4 py-2.5 bg-slate-950 hover:bg-slate-800 text-amber-300 font-black text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center space-x-1.5 whitespace-nowrap"
+              >
+                <Calendar className="w-4 h-4 text-amber-400" />
+                <span>실시간 간편예약</span>
+              </button>
+              <a
+                href={`tel:${PHONE_NUMBERS.reservation.replace('-', '')}`}
+                className="flex-1 sm:flex-none px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-black text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center space-x-1.5 whitespace-nowrap"
+              >
+                <Phone className="w-4 h-4" />
+                <span>무료 전화상담</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           {/* Left Text & CTA */}
@@ -37,16 +81,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenPartnerModal })
 
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
-              보이지 않는 곰팡이와 유해 세균,<br />
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-200 to-sky-300 bg-clip-text text-transparent">
-                100% 완전분해 정밀 세척
-              </span>으로 박멸합니다
+              {banner.title}
             </h1>
 
             {/* Paragraph */}
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal max-w-2xl">
-              에어컨·세탁기·건조기·공기청정기·제습기·냉장고 토탈 케어.<br className="hidden sm:inline" />
-              겉만 닦는 수박 겉핥기식 청소는 이제 그만! 전문 엔지니어가 부품 하나하나 완전 분해하여 새것처럼 위생 소독해 드립니다. (공기청정기 등 필요시 고온 스팀 적용)
+              {banner.subtitle}
             </p>
 
             {/* Key Value Props List */}
@@ -65,7 +105,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenPartnerModal })
               </div>
               <div className="flex items-center space-x-1.5 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/50">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>KB 1억 배상책임</span>
+                <span>철저한 A/S 보증</span>
               </div>
             </div>
 
@@ -187,8 +227,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenPartnerModal })
                     <div className="text-[10px] text-slate-400">분해살균보증</div>
                   </div>
                   <div>
-                    <div className="text-base font-black text-emerald-400">1억원</div>
-                    <div className="text-[10px] text-slate-400">배상책임보험</div>
+                    <div className="text-base font-black text-emerald-400">100%</div>
+                    <div className="text-[10px] text-slate-400">철저한 A/S 보증</div>
                   </div>
                 </div>
               </div>

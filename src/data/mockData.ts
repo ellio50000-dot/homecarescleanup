@@ -8,13 +8,13 @@ export interface CalloutRegion {
 }
 
 export const CALLOUT_REGIONS: CalloutRegion[] = [
-  { id: 'jeonju', name: '전주', fee: 10000, cities: '전주시' },
-  { id: 'gimje_iksan', name: '김제·익산', fee: 20000, cities: '김제시, 익산시' },
-  { id: 'gunsan_namwon_jeongeup', name: '군산·남원·정읍', fee: 30000, cities: '군산시, 남원시, 정읍시' },
-  { id: 'other', name: '이외 지역', fee: 40000, cities: '전북 기타 및 타지역' },
+  { id: 'jeonju', name: '전주', fee: 0, cities: '전주시 (출장비 무료)' },
+  { id: 'wanju_imsil_gimje_jinan', name: '완주·임실·김제·진안', fee: 20000, cities: '완주군, 임실군, 김제시, 진안군' },
+  { id: 'iksan_gunsan_namwon_jeongeup', name: '익산·군산·남원·정읍', fee: 30000, cities: '익산시, 군산시, 남원시, 정읍시' },
+  { id: 'other', name: '이외 지역', fee: 40000, cities: '전북 기타 외곽 및 타지역' },
 ];
 
-export const CALLOUT_FEE = 10000;
+export const CALLOUT_FEE = 0;
 
 export const PHONE_NUMBERS = {
   representative: '1577-7931',
@@ -325,20 +325,21 @@ export const APPLIANCES_DATA: ApplianceInfo[] = [
         estimatedMinutes: 70,
         image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=400&auto=format&fit=crop',
       },
+
       {
         id: 'purifier-humid',
         name: '가습 겸용 공기청정기',
-        description: '수조부, 디스크 필터, 가습 팬 곰팡이 완전 분해 고온 스팀 소독',
+        description: '가습 수조, 디스크, 팬 및 센서부 살균 소독',
         price: 120000,
-        estimatedMinutes: 60,
-        image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=400&auto=format&fit=crop',
+        estimatedMinutes: 80,
+        image: 'https://images.unsplash.com/photo-1585338107529-13afc5f02586?q=80&w=400&auto=format&fit=crop',
       },
     ],
     processSteps: [
-      { title: '1. 먼지센서 정밀도 체크', description: '센서 반응도 및 팬 소음 사전 검사' },
-      { title: '2. 블로워 팬 및 덕트 구조 분해', description: '손이 닿지 않는 팬 뒷면까지 분리' },
-      { title: '3. 초음파 & 고온 스팀 세척', description: '팬 날개의 흡착 먼지 140℃ 고온 스팀 세척' },
-      { title: '4. UV 항균 살균 및 센서 보정', description: '미세먼지 측정 센서 렌즈 클리닝' },
+      { title: '1. 센서 및 풍량 기본 기능 점검', description: '미세먼지 센서 유로 점검' },
+      { title: '2. 극세사 프리필터 & 헤파필터 탈거', description: '필터 수명 점검 및 수조 분해' },
+      { title: '3. 팬 및 송풍 유로 고온 스팀 살균', description: '140도 고온 스팀으로 곰팡이 포자 사멸' },
+      { title: '4. 피톤치드 연무 소독 및 작동 테스트', description: '청정 바람 확인 및 조립' },
     ],
   },
   {
@@ -464,15 +465,15 @@ export const INITIAL_REVIEWS: Review[] = [
   {
     id: 'rev-1',
     applianceId: 'aircon',
-    applianceName: '스탠드+벽걸이 2in1 에어컨',
+    applianceName: '스탠드+벽걸이 2인1 에어컨',
     author: '김*현 고객님',
     phoneLastDigits: '8921',
     rating: 5,
     date: '2026.07.28',
-    region: '서울 서초구',
+    region: '전주 덕진구 송천동',
     content: '여름이 시작되면서 에어컨을 틀었는데 걸레 냄새가 너무 심해서 참다못해 홈케어스 클린업에 예약했습니다. 기사님이 진짜 드레인판부터 송풍팬까지 싹 다 뜯어서 보여주셨는데 검은 곰팡이가 엄청 많더라구요... 140도 스팀으로 씻겨나가는거 보는데 속이 다 시원했습니다! 청소 후에는 신기하게 냄새 하나도 안나고 바람도 훨씬 시원해요!! 100% 만족합니다.',
     isVerified: true,
-    technicianReply: '안녕하세요 김*현 고객님! 홈케어스 클린업 서초점 팀장입니다. 송풍팬 안쪽 묵은 곰팡이까지 깨끗이 정밀 스팀 살균해드렸으니 올여름은 안심하고 시원하게 보내세요. 감사합니다!',
+    technicianReply: '안녕하세요 김*현 고객님! 홈케어스 클린업 전주점 팀장입니다. 송풍팬 안쪽 묵은 곰팡이까지 깨끗이 정밀 스팀 살균해드렸으니 올여름은 안심하고 시원하게 보내세요. 감사합니다!',
     photos: [
       'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=400&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=400&auto=format&fit=crop',
@@ -486,7 +487,7 @@ export const INITIAL_REVIEWS: Review[] = [
     phoneLastDigits: '4102',
     rating: 5,
     date: '2026.07.25',
-    region: '경기 성남시 분당구',
+    region: '전주 완산구 효자동',
     content: '아기 빨래를 하는데 자꾸 옷에 검은 미역같은 이물질이 묻어나와서 세탁조 클리너만 쓰다가 도저히 안되겠다 싶어서 분해 청소를 신청했어요. 기사님이 스파이더까지 다 분해하셨는데 경악했습니다... 섬유유연제 찌꺼기가 떡처럼 붙어있었네요. 고압수로 싹 날려주시고 피톤치드 소독까지 깔끔하게 해주셔서 이제 안심하고 아기옷 빨래합니다.',
     isVerified: true,
     technicianReply: '고객님, 아이 피부건강을 위해서라도 1년에 한번 분해세척 추천해드립니다! 항상 안심하고 빨래하실 수 있도록 정성을 다하겠습니다.',
@@ -502,7 +503,7 @@ export const INITIAL_REVIEWS: Review[] = [
     phoneLastDigits: '1590',
     rating: 5,
     date: '2026.07.22',
-    region: '인천 연수구 송도',
+    region: '완주군 이서면 (혁신도시)',
     content: '건조기 돌려도 옷이 축축하고 수건에서 꿉꿉한 냄새가 나더라구요. 콘덴서 핀 쪽에 먼지가 딱딱하게 막혀있다고 하셔서 전용 솔이랑 고온스팀으로 다 뚫어주셨습니다. 청소 끝나고 수건 말려봤는데 건조 시간도 훨씬 빨라지고 바싹 잘 말라요! 신세계입니다.',
     isVerified: true,
     photos: [
@@ -517,10 +518,10 @@ export const INITIAL_REVIEWS: Review[] = [
     phoneLastDigits: '9033',
     rating: 5,
     date: '2026.07.18',
-    region: '서울 송파구 잠실',
+    region: '전주 덕진구 아중리',
     content: '이사하면서 냉장고 청소를 맡겼는데 선반 다 꺼내서 친환경 세제로 세척해주시고 고무패킹 검은 곰팡이 자국도 깔끔하게 싹 지워졌어요. 뒤쪽 기계실 먼지까지 청소기로 다 흡입해주시는 디테일에 감동했습니다!',
     isVerified: true,
-    technicianReply: '잠실 고객님, 새집에서도 쾌적하고 위생적인 식생활 유지하시길 바랍니다. 감사합니다!',
+    technicianReply: '전주 고객님, 새집에서도 쾌적하고 위생적인 식생활 유지하시길 바랍니다. 감사합니다!',
   },
   {
     id: 'rev-5',
@@ -530,7 +531,7 @@ export const INITIAL_REVIEWS: Review[] = [
     phoneLastDigits: '3341',
     rating: 5,
     date: '2026.07.12',
-    region: '경기 수원시 영통구',
+    region: '익산시 영등동',
     content: '장마철이라 제습기 가동하려는데 물통에 이끼 같은게 보여서 제습기도 청소가 되나 찾아보다 홈케어스에 문의했더니 기사님이 친절하게 오셔서 완전 분해 해주셨어요. 바람에서 피톤치드 향 솔솔 나서 기분 좋습니다.',
     isVerified: true,
   },
@@ -563,7 +564,7 @@ export const FAQS = [
   {
     category: '요금안내',
     question: '출장비 및 주요 가전 세척 요금 기준은 어떻게 되나요?',
-    answer: '통돌이세탁기 11만원, 드럼세탁기 15만원, 드럼세탁기+건조기 2단 30만원(정가 32만원 / 1대만 청소시 전화문의), 미니세탁기 8만원, 트윈워시 23만원, 플렉스워시 33만원, 워시타워 32만원 / 벽걸이에어컨 8만원, 스탠드에어컨 14만원, 창문형에어컨 12만원 / 건조기 16만원, 건조기 이동/특수 6만원 / 공기청정기 1단 8만원, 2단 12만원, 가습겸용 12만원 / 제습기 8만원, 대용량 12만원입니다. 출장비는 선택 지역에 따라 전주 1만원, 김제/익산 2만원, 군산/남원/정읍 3만원, 이외 지역 4만원입니다. 2개 이상 세척 시 패키지 할인이 자동 적용됩니다.',
+    answer: '통돌이세탁기 11만원, 드럼세탁기 15만원, 드럼세탁기+건조기 2단 30만원(정가 32만원 / 1대만 청소시 전화문의), 미니세탁기 8만원, 트윈워시 23만원, 플렉스워시 33만원, 워시타워 32만원 / 벽걸이에어컨 8만원, 스탠드에어컨 14만원, 창문형에어컨 12만원 / 건조기 16만원, 건조기 이동/특수 6만원 / 공기청정기 1단 8만원, 2단 12만원, 가습겸용 12만원 / 제습기 8만원, 대용량 12만원입니다. 출장비는 선택 지역에 따라 전주 출장비 없음(0원), 완주/임실/김제/진안 2만원, 익산/군산/남원/정읍 3만원, 이외 지역 4만원입니다. 2개 이상 세척 시 패키지 할인이 자동 적용됩니다.',
   },
   {
     category: '예약/결제',
@@ -578,7 +579,7 @@ export const FAQS = [
   {
     category: 'A/S보증',
     question: '세척 후 제품에 고장이 나면 보상이 되나요?',
-    answer: '홈케어스 클린업은 KB손해보험 1억원 생산물배상책임보험에 가입되어 있습니다. 만에 하나 발생할 수 있는 이상 작동에도 본사가 책임지고 100% 보상 및 수리를 진행해 드립니다.',
+    answer: '홈케어스 클린업은 세척 작업 후 발생할 수 있는 이상 작동 및 고장에 대해 본사 전문 엔지니어가 책임지고 무상 점검 및 수리 A/S 서비스를 원스톱으로 지원해 드립니다.',
   },
   {
     category: '기사모집',

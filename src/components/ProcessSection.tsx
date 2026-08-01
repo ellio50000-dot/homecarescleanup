@@ -87,9 +87,9 @@ export const ProcessSection: React.FC = () => {
               <div className="inline-flex p-3 rounded-2xl bg-blue-800/50 text-blue-300 border border-blue-600/40 mb-1">
                 <ShieldCheck className="w-7 h-7 text-emerald-400" />
               </div>
-              <h4 className="text-lg font-extrabold text-white">KB 1억원 배상책임보험</h4>
+              <h4 className="text-lg font-extrabold text-white">100% 무상 A/S 품질 보증</h4>
               <p className="text-xs text-slate-300 leading-relaxed">
-                세척 작업 중 발생할 수 있는 이상이나 제품 손상에 대해 KB손해보험 1억원 배상책임으로 완벽 보상해 드립니다.
+                세척 작업 후 발생할 수 있는 이상 작동 및 제품 문제에 대해 본사 전문 엔지니어가 책임지고 무상 A/S 및 점검을 지원해 드립니다.
               </p>
             </div>
 

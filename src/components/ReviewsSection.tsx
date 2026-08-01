@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { INITIAL_REVIEWS } from '../data/mockData';
 import { Review, ApplianceCategory } from '../types';
 import { Star, MessageSquare, ThumbsUp, Plus, ShieldCheck, Camera, CheckCircle2, Filter, X } from 'lucide-react';
+import { useCMS } from '../context/CMSContext';
 
 export const ReviewsSection: React.FC = () => {
-  const [reviews, setReviews] = useState<Review[]>([]);
+  const { cmsData, addReview } = useCMS();
+  const reviews = cmsData.reviews;
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
 
@@ -14,22 +16,8 @@ export const ReviewsSection: React.FC = () => {
   const [newApplianceName, setNewApplianceName] = useState('벽걸이 에어컨');
   const [newApplianceCategory, setNewApplianceCategory] = useState<ApplianceCategory>('aircon');
   const [newRating, setNewRating] = useState(5);
-  const [newRegion, setNewRegion] = useState('서울 서초구');
+  const [newRegion, setNewRegion] = useState('전주 완산구 효자동');
   const [newContent, setNewContent] = useState('');
-
-  useEffect(() => {
-    const stored = localStorage.getItem('homecares_reviews');
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        setReviews([...parsed, ...INITIAL_REVIEWS]);
-      } catch (e) {
-        setReviews(INITIAL_REVIEWS);
-      }
-    } else {
-      setReviews(INITIAL_REVIEWS);
-    }
-  }, []);
 
   const handleAddReview = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,8 +26,7 @@ export const ReviewsSection: React.FC = () => {
       return;
     }
 
-    const created: Review = {
-      id: `rev-custom-${Date.now()}`,
+    addReview({
       applianceId: newApplianceCategory,
       applianceName: newApplianceName,
       author: `${newAuthor.slice(0, 1)}*${newAuthor.slice(-1)} 고객님`,
@@ -49,14 +36,7 @@ export const ReviewsSection: React.FC = () => {
       content: newContent,
       region: newRegion,
       isVerified: true,
-    };
-
-    const updated = [created, ...reviews];
-    setReviews(updated);
-
-    // Save user's newly written reviews to localStorage
-    const userOnlyReviews = updated.filter((r) => r.id.startsWith('rev-custom-'));
-    localStorage.setItem('homecares_reviews', JSON.stringify(userOnlyReviews));
+    });
 
     alert('감사합니다! 고객님의 소중한 방문 세척 후기가 등록되었습니다.');
     setIsWriteModalOpen(false);
@@ -288,7 +268,7 @@ export const ReviewsSection: React.FC = () => {
                     <label className="block font-bold text-gray-700 mb-1">지역</label>
                     <input
                       type="text"
-                      placeholder="예: 서울 강남구"
+                      placeholder="예: 전주 덕진구"
                       value={newRegion}
                       onChange={(e) => setNewRegion(e.target.value)}
                       className="w-full p-2.5 rounded-xl border border-gray-300"

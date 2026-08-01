@@ -16,6 +16,7 @@ interface SelectedCartItem {
   optionName: string;
   applianceTitle: string;
   price: number;
+  originalPrice?: number;
   quantity: number;
 }
 
@@ -41,6 +42,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       optionName: initialOption.name,
       applianceTitle: initialAppliance.title,
       price: initialOption.price,
+      originalPrice: initialOption.originalPrice,
       quantity: 1,
     },
   ]);
@@ -98,6 +100,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           optionName: option.name,
           applianceTitle: appliance.title,
           price: option.price,
+          originalPrice: option.originalPrice,
           quantity: 1,
         },
       ]);
@@ -324,6 +327,39 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     </button>
                   </div>
                 </div>
+
+                {/* Selected Option Price Badge with Red Strikethrough */}
+                {(() => {
+                  const currentApp = APPLIANCES_DATA.find((a) => a.id === pickerApplianceId);
+                  const currentOpt = currentApp?.options.find((o) => o.id === pickerOptionId);
+                  if (!currentOpt) return null;
+                  const hasDisc = currentOpt.originalPrice && currentOpt.originalPrice > currentOpt.price;
+                  const discPct = hasDisc
+                    ? Math.round(((currentOpt.originalPrice! - currentOpt.price) / currentOpt.originalPrice!) * 100)
+                    : 0;
+                  return (
+                    <div className="flex items-center justify-between text-xs bg-white/90 p-2.5 rounded-xl border border-blue-200 mt-2 shadow-xs">
+                      <span className="font-semibold text-gray-700 truncate max-w-[180px] sm:max-w-xs">
+                        💡 선택한 옵션: <strong className="text-gray-900">{currentOpt.name}</strong>
+                      </span>
+                      <div className="flex items-center space-x-2 flex-shrink-0">
+                        {hasDisc && (
+                          <span className="text-xs text-rose-500 font-bold line-through decoration-rose-500 decoration-2">
+                            정가 {currentOpt.originalPrice?.toLocaleString()}원
+                          </span>
+                        )}
+                        {discPct > 0 && (
+                          <span className="text-[10px] font-black text-white bg-rose-500 px-1.5 py-0.5 rounded">
+                            -{discPct}%
+                          </span>
+                        )}
+                        <span className="text-sm font-black text-blue-600">
+                          {currentOpt.price.toLocaleString()}원
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
 
               {/* Cart List */}
@@ -331,32 +367,40 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider">
                   선택하신 세척 품목 ({cartItems.length}개)
                 </label>
-                {cartItems.map((item, idx) => (
-                  <div
-                    key={`${item.applianceId}-${item.optionId}-${idx}`}
-                    className="flex items-center justify-between p-3.5 bg-white rounded-2xl border border-gray-200 shadow-sm"
-                  >
-                    <div>
-                      <div className="text-xs font-bold text-blue-600">{item.applianceTitle}</div>
-                      <div className="text-sm font-extrabold text-gray-900">{item.optionName}</div>
-                      <div className="text-[11px] text-gray-500">수량: {item.quantity}개</div>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="text-right">
-                        <div className="text-sm font-black text-gray-900">
-                          {(item.price * item.quantity).toLocaleString()}원
-                        </div>
+                {cartItems.map((item, idx) => {
+                  const itemHasDiscount = item.originalPrice && item.originalPrice > item.price;
+                  return (
+                    <div
+                      key={`${item.applianceId}-${item.optionId}-${idx}`}
+                      className="flex items-center justify-between p-3.5 bg-white rounded-2xl border border-gray-200 shadow-sm"
+                    >
+                      <div>
+                        <div className="text-xs font-bold text-blue-600">{item.applianceTitle}</div>
+                        <div className="text-sm font-extrabold text-gray-900">{item.optionName}</div>
+                        <div className="text-[11px] text-gray-500">수량: {item.quantity}개</div>
                       </div>
-                      <button
-                        onClick={() => handleRemoveItem(idx)}
-                        className="p-1.5 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
-                        title="삭제"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      <div className="flex items-center space-x-3">
+                        <div className="text-right">
+                          {itemHasDiscount && (
+                            <div className="text-xs text-rose-500 font-bold line-through decoration-rose-500 decoration-2">
+                              {(item.originalPrice! * item.quantity).toLocaleString()}원
+                            </div>
+                          )}
+                          <div className="text-sm font-black text-gray-900">
+                            {(item.price * item.quantity).toLocaleString()}원
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => handleRemoveItem(idx)}
+                          className="p-1.5 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                          title="삭제"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Additional Services */}
@@ -910,7 +954,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <div className="text-right text-[11px] text-slate-300">
                   <div className="flex items-center space-x-1 justify-end text-emerald-400 font-bold">
                     <ShieldCheck className="w-4 h-4" />
-                    <span>KB손해보험 1억 가입</span>
+                    <span>100% 무상 A/S 보증</span>
                   </div>
                 </div>
               </div>

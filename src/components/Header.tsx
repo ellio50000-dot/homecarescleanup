@@ -36,16 +36,15 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
       {/* Top Banner - Phone Numbers & CS Info */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-900 text-white text-xs py-2 px-4">
+      <div className="bg-gradient-to-r from-blue-950 via-indigo-900 to-blue-950 text-white text-xs py-2 px-4 border-b border-blue-800/40">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center space-x-4">
-            <span className="flex items-center space-x-1.5 font-medium bg-blue-800/60 px-2.5 py-0.5 rounded-full border border-blue-400/30">
-              <ShieldCheck className="w-3.5 h-3.5 text-blue-300" />
-              <span>KB손해보험 1억원 생산물배상책임보험 가입</span>
+          <div className="flex items-center space-x-3">
+            <span className="flex items-center space-x-1.5 font-bold bg-amber-400 text-slate-950 px-2.5 py-0.5 rounded-full shadow-sm text-[11px]">
+              <ShieldCheck className="w-3.5 h-3.5 text-slate-950" />
+              <span>전북 전지역 분해청소 출장</span>
             </span>
-            <span className="hidden md:inline-flex items-center space-x-1 text-blue-200">
-              <Clock className="w-3 h-3 mr-1" />
-              <span>운영시간: {PHONE_NUMBERS.hours}</span>
+            <span className="hidden xl:inline-flex items-center space-x-1 text-slate-200 text-[11px] font-medium">
+              <span>(전주·익산·군산·김제·정읍·남원 에어컨·세탁기·건조기·공기청정기·제습기·냉장고)</span>
             </span>
           </div>
 

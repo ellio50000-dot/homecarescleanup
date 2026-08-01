@@ -129,9 +129,6 @@ export const ApplianceServices: React.FC<ApplianceServicesProps> = ({ onOpenBook
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-sm font-bold text-gray-900">세부 품목 및 투명한 정가표</h4>
-                  <span className="text-xs font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-200">
-                    ※ 출장비: 전주 1만원 / 김제·익산 2만원 / 군산·남원·정읍 3만원 / 이외지역 4만원
-                  </span>
                 </div>
                 <div className="space-y-2.5">
                   {selectedAppliance.options.map((opt) => {
@@ -231,26 +228,24 @@ export const ApplianceServices: React.FC<ApplianceServicesProps> = ({ onOpenBook
 
             </div>
 
-            {/* Right Column - Before/After Comparison & Disassembly Workflow */}
+            {/* Right Column - Disassembly Workflow Process */}
             <div className="lg:col-span-5 space-y-6">
               
-              {/* Before & After Interactive Preview */}
-              <StandAirconBeforeAfter />
-
               {/* Step Process Summary */}
-              <div className="bg-gray-50 p-4 rounded-2xl border border-gray-200 space-y-3">
-                <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
-                  {selectedAppliance.title} 표준 분해세척 순서
+              <div className="bg-gray-50 p-5 rounded-2xl border border-gray-200 space-y-4">
+                <h4 className="text-xs font-black text-gray-900 uppercase tracking-wider flex items-center justify-between">
+                  <span>{selectedAppliance.title} 표준 분해세척 순서</span>
+                  <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md font-extrabold">100% 완전분해</span>
                 </h4>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {selectedAppliance.processSteps.map((step, idx) => (
-                    <div key={idx} className="flex items-start space-x-2 text-xs">
-                      <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center flex-shrink-0 mt-0.5 text-[10px]">
+                    <div key={idx} className="flex items-start space-x-2.5 text-xs bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
+                      <span className="w-5 h-5 rounded-full bg-blue-600 text-white font-black flex items-center justify-center flex-shrink-0 mt-0.5 text-[10px]">
                         {idx + 1}
                       </span>
                       <div>
-                        <span className="font-bold text-gray-900">{step.title}</span>
-                        <span className="text-gray-500 ml-1.5">- {step.description}</span>
+                        <span className="font-extrabold text-gray-900">{step.title}</span>
+                        <p className="text-gray-500 mt-0.5 leading-relaxed">{step.description}</p>
                       </div>
                     </div>
                   ))}
@@ -262,6 +257,9 @@ export const ApplianceServices: React.FC<ApplianceServicesProps> = ({ onOpenBook
           </div>
 
         </div>
+
+        {/* Full-width 100% Before/After Comparison Gallery below price table */}
+        <StandAirconBeforeAfter onOpenBooking={() => onOpenBooking(selectedAppliance.id)} />
 
       </div>
     </section>

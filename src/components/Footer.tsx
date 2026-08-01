@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPartnerModal, onOpenBookin
             </p>
             <div className="flex items-center space-x-2 text-[11px] text-emerald-400">
               <ShieldCheck className="w-4 h-4" />
-              <span>KB손해보험 1억원 생산물배상책임보험 가입업체</span>
+              <span>전북 가전 완전분해 세척 전문업체 (100% 무상 A/S 보증)</span>
             </div>
           </div>
 
