@@ -35,7 +35,7 @@
     }
     .top-trust-bar span { display: flex; align-items: center; gap: 6px; }
 
-    /* 2. 네비게이션 헤더 (GNB) - 우렁총각 대비 고도화 */
+    /* 2. 네비게이션 헤더 (GNB) */
     .header-wrapper {
       position: sticky;
       top: 0;
@@ -62,7 +62,6 @@
     }
     .logo span { color: #0066FF; }
 
-    /* GNB 메뉴 목록 */
     .gnb-menu {
       display: flex;
       align-items: center;
@@ -75,9 +74,7 @@
       color: #334155;
       transition: color 0.2s ease;
     }
-    .gnb-menu a:hover {
-      color: #0066FF;
-    }
+    .gnb-menu a:hover { color: #0066FF; }
 
     .header-cta {
       background: #0066FF;
@@ -91,7 +88,7 @@
     }
     .header-cta:hover { background: #0052CC; transform: translateY(-2px); }
 
-    /* 3. 우렁총각 스타일 프리미엄 대형 히어로 배너 섹션 */
+    /* 3. 프리미엄 대형 히어로 배너 */
     .hero-banner {
       position: relative;
       min-height: 580px;
@@ -104,10 +101,7 @@
       color: #FFFFFF;
       padding: 80px 20px;
     }
-    .hero-banner-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .hero-banner-inner { max-width: 900px; margin: 0 auto; }
     .hero-banner-badge {
       display: inline-block;
       background: rgba(255, 255, 255, 0.2);
@@ -119,7 +113,6 @@
       border-radius: 30px;
       margin-bottom: 24px;
       border: 1px solid rgba(255, 255, 255, 0.3);
-      letter-spacing: 0.5px;
     }
     .hero-banner-title {
       font-size: clamp(32px, 5.5vw, 56px);
@@ -127,64 +120,30 @@
       line-height: 1.25;
       margin-bottom: 20px;
       letter-spacing: -0.03em;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
-    .hero-banner-title span {
-      color: #00D4B2;
-      background: linear-gradient(120deg, rgba(0, 212, 178, 0.3) 0%, rgba(0, 102, 255, 0.3) 100%);
-      padding: 0 10px;
-      border-radius: 8px;
-    }
+    .hero-banner-title span { color: #00D4B2; }
     .hero-banner-sub {
       font-size: clamp(17px, 2.2vw, 22px);
-      font-weight: 500;
       color: #E2E8F0;
       margin-bottom: 40px;
-      text-shadow: 0 1px 5px rgba(0,0,0,0.2);
     }
-    .hero-banner-btn-group {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+    .hero-banner-btn-group { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
     .hero-banner-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       padding: 18px 36px;
       font-size: 18px;
       font-weight: 800;
       border-radius: 12px;
       transition: all 0.3s ease;
     }
-    .hero-banner-btn.primary {
-      background: #0066FF;
-      color: #FFFFFF;
-      box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4);
-    }
-    .hero-banner-btn.primary:hover {
-      background: #0052CC;
-      transform: translateY(-3px);
-    }
-    .hero-banner-btn.secondary {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-    }
-    .hero-banner-btn.secondary:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-3px);
-    }
+    .hero-banner-btn.primary { background: #0066FF; color: #FFFFFF; box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4); }
+    .hero-banner-btn.primary:hover { background: #0052CC; transform: translateY(-3px); }
+    .hero-banner-btn.secondary { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.4); }
+    .hero-banner-btn.secondary:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-3px); }
 
-    /* 4. 실시간 견적 산출기 카드는 배너 바로 아래 오버랩 스타일 적용 */
-    .calc-sec {
-      margin-top: -60px;
-      position: relative;
-      z-index: 10;
-      padding: 0 20px 60px 20px;
-    }
+    /* 4. 실시간 견적 산출기 카드 */
+    .calc-sec { margin-top: -60px; position: relative; z-index: 10; padding: 0 20px 60px 20px; }
     .calc-card {
       max-width: 800px;
       margin: 0 auto;
@@ -195,147 +154,148 @@
       box-shadow: 0 20px 50px -10px rgba(0, 102, 255, 0.15);
       text-align: left;
     }
-    .calc-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #0A2540;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .calc-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 14px;
-      font-weight: 700;
-      color: #475569;
-      margin-bottom: 8px;
-    }
+    .calc-title { font-size: 22px; font-weight: 800; color: #0A2540; margin-bottom: 24px; text-align: center; }
+    .calc-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 700; color: #475569; margin-bottom: 8px; }
     .form-group select {
-      width: 100%;
-      padding: 14px 16px;
-      font-size: 16px;
-      border: 1px solid #CBD5E1;
-      border-radius: 12px;
-      background-color: #F8FAFC;
-      color: #1E293B;
-      font-weight: 600;
-      outline: none;
+      width: 100%; padding: 14px 16px; font-size: 16px; border: 1px solid #CBD5E1; border-radius: 12px; background-color: #F8FAFC; color: #1E293B; font-weight: 600; outline: none;
     }
     .price-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #F0F7FF;
-      padding: 20px 24px;
-      border-radius: 16px;
-      margin-bottom: 24px;
+      display: flex; justify-content: space-between; align-items: center; background: #F0F7FF; padding: 20px 24px; border-radius: 16px; margin-bottom: 24px;
     }
     .price-box span { font-size: 16px; font-weight: 700; color: #334155; }
     .price-box strong { font-size: 32px; font-weight: 900; color: #0066FF; }
 
     .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 18px 24px;
-      font-size: 17px;
-      font-weight: 800;
-      border-radius: 14px;
-      transition: all 0.25s ease;
-    }
+    .btn { display: inline-flex; justify-content: center; align-items: center; padding: 18px 24px; font-size: 17px; font-weight: 800; border-radius: 14px; transition: all 0.25s ease; }
     .btn-primary { background: #0066FF; color: #FFF; box-shadow: 0 8px 20px -4px rgba(0, 102, 255, 0.4); }
     .btn-primary:hover { background: #0052CC; transform: translateY(-2px); }
     .btn-secondary { background: #0A2540; color: #FFF; }
     .btn-secondary:hover { background: #1E3A8A; transform: translateY(-2px); }
 
-    /* 5. 우렁총각 VS 홈케어스클린업 비교 섹션 */
-    .compare-sec { background: #F8FAFC; padding: 80px 20px; }
-    .inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    /* 5. 프리미엄 서비스 소개 섹션 (Service Cards) */
+    .services-section { padding: 80px 20px; background: #FFFFFF; text-align: center; }
+    .sec-badge { display: inline-block; color: #0066FF; font-weight: 800; font-size: 13px; letter-spacing: 1px; margin-bottom: 8px; }
     .sec-title { font-size: 34px; font-weight: 900; color: #0A2540; margin-bottom: 12px; }
     .sec-title span { color: #0066FF; }
-    .sec-sub { font-size: 16px; color: #64748B; margin-bottom: 48px; }
-    
-    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; }
-    .compare-card {
-      background: #FFF;
-      border-radius: 24px;
-      padding: 40px 32px;
+    .sec-sub { font-size: 16px; color: #64748B; margin-bottom: 50px; }
+
+    .services-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
+    }
+    .service-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: left;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -10px rgba(0, 102, 255, 0.12);
+      border-color: #0066FF;
+    }
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: #F0F7FF;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0A2540;
+      margin-bottom: 12px;
+    }
+    .service-card p {
+      font-size: 14px;
+      color: #64748B;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .service-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .service-tag {
+      background: #F1F5F9;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* 6. 4단계 딥클리닝 프로세스 */
+    .process-sec { background: #F8FAFC; padding: 80px 20px; text-align: center; }
+    .process-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .process-step {
+      background: #FFFFFF;
+      border-radius: 18px;
+      padding: 30px 20px;
       border: 1px solid #E2E8F0;
       position: relative;
     }
-    .compare-card.good {
-      border: 2px solid #0066FF;
-      box-shadow: 0 15px 40px -10px rgba(0, 102, 255, 0.15);
+    .process-num {
+      width: 36px;
+      height: 36px;
+      background: #0066FF;
+      color: #FFF;
+      font-weight: 900;
+      font-size: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
     }
-    .badge-recommend {
-      position: absolute;
-      top: -14px; right: 28px;
-      background: #0066FF; color: #FFF;
-      font-size: 12px; font-weight: 800;
-      padding: 4px 14px; border-radius: 12px;
-    }
+    .process-step h4 { font-size: 18px; font-weight: 800; color: #0A2540; margin-bottom: 8px; }
+    .process-step p { font-size: 14px; color: #64748B; }
+
+    /* 7. 우렁총각 VS 홈케어스클린업 비교 섹션 */
+    .compare-sec { background: #FFFFFF; padding: 80px 20px; }
+    .compare-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; }
+    .compare-card { background: #FFF; border-radius: 24px; padding: 40px 32px; border: 1px solid #E2E8F0; position: relative; }
+    .compare-card.good { border: 2px solid #0066FF; box-shadow: 0 15px 40px -10px rgba(0, 102, 255, 0.15); }
+    .badge-recommend { position: absolute; top: -14px; right: 28px; background: #0066FF; color: #FFF; font-size: 12px; font-weight: 800; padding: 4px 14px; border-radius: 12px; }
     .card-tag { font-size: 14px; font-weight: 700; color: #64748B; margin-bottom: 10px; }
     .card-tag.blue { color: #0066FF; }
     .compare-card h3 { font-size: 22px; font-weight: 800; color: #0A2540; margin-bottom: 20px; }
     .compare-card ul { list-style: none; }
     .compare-card li { font-size: 16px; line-height: 1.9; color: #334155; margin-bottom: 10px; }
 
-    /* 6. 비포 & 애프터 갤러리 */
-    .ba-section { padding: 80px 20px; }
-    .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
-    .ba-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden; }
-    .ba-img-box {
-      height: 220px;
-      background: #E2E8F0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #64748B;
-      position: relative;
-    }
-    .ba-img-box.before { background: #F1F5F9; color: #EF4444; }
-    .ba-img-box.after { background: #E0F2FE; color: #0066FF; }
-    .ba-info { padding: 20px; text-align: center; }
-    .ba-info h4 { font-size: 18px; font-weight: 800; color: #0A2540; }
-
-    /* 7. 모바일 하단 고정 빠른 상담바 */
+    /* 8. 모바일 하단 고정 빠른 상담바 */
     .mobile-float-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: #FFFFFF;
-      border-top: 1px solid #E2E8F0;
-      padding: 12px 16px;
-      display: flex;
-      gap: 10px;
-      z-index: 999;
-      box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
+      position: fixed; bottom: 0; left: 0; right: 0; background: #FFFFFF; border-top: 1px solid #E2E8F0; padding: 12px 16px; display: flex; gap: 10px; z-index: 999; box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
     }
-    .mobile-btn {
-      flex: 1;
-      text-align: center;
-      padding: 14px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 15px;
-    }
+    .mobile-btn { flex: 1; text-align: center; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 15px; }
     .mobile-btn.call { background: #0A2540; color: #FFF; }
     .mobile-btn.chat { background: #0066FF; color: #FFF; }
 
-    @media (max-width: 900px) {
-      .gnb-menu { display: none; }
-    }
+    @media (max-width: 900px) { .gnb-menu { display: none; } }
     @media (max-width: 768px) {
       .calc-grid, .btn-group, .compare-grid { grid-template-columns: 1fr; }
       .top-trust-bar { flex-direction: column; gap: 6px; }
       .hero-banner { min-height: 480px; padding: 60px 20px; }
-      .hero-banner-btn-group { flex-direction: column; }
     }
   </style>
 </head>
@@ -348,26 +308,25 @@
     <span>✨ 서비스 후 100% 무상 A/S 보장</span>
   </div>
 
-  <!-- 2. Header & GNB (우렁총각 메뉴 구조 반영) -->
+  <!-- 2. Header & GNB -->
   <div class="header-wrapper">
     <header class="header">
       <a href="#" class="logo">홈케어스<span>클린업</span></a>
 
-      <!-- 네비게이션 메뉴 (우렁총각 6대 메뉴 구현) -->
       <ul class="gnb-menu">
         <li><a href="#about">홈케어스 이야기</a></li>
-        <li><a href="#service">서비스 소개</a></li>
+        <li><a href="#services">서비스 소개</a></li>
+        <li><a href="#process">세척 프로세스</a></li>
+        <li><a href="#compare">왜 홈케어스인가</a></li>
         <li><a href="#reviews">리얼후기</a></li>
-        <li><a href="#branch">전국 지사</a></li>
-        <li><a href="#faq">Q&A</a></li>
-        <li><a href="#contact">기사문의</a></li>
+        <li><a href="#contact">전화상담</a></li>
       </ul>
 
       <a href="tel:010-0000-0000" class="header-cta">빠른 상담신청</a>
     </header>
   </div>
 
-  <!-- 3. 메인 프리미엄 히어로 배너 (우렁총각 배경 배너 스타일 고도화) -->
+  <!-- 3. 메인 프리미엄 히어로 배너 -->
   <section class="hero-banner" id="about">
     <div class="hero-banner-inner">
       <div class="hero-banner-badge">100% COMPLETE DISASSEMBLY CLEANING</div>
@@ -386,7 +345,7 @@
     </div>
   </section>
 
-  <!-- 4. 실시간 견적 산출기 (오버랩 카드 스타일) -->
+  <!-- 4. 실시간 견적 산출기 -->
   <section class="calc-sec" id="calc">
     <div class="calc-card">
       <h3 class="calc-title">⚡ 3초 실시간 예상 견적 산출기</h3>
@@ -424,11 +383,100 @@
     </div>
   </section>
 
-  <!-- 5. Comparison Section -->
-  <section class="compare-sec" id="service">
+  <!-- 5. 프리미엄 서비스 소개 (Service Section) -->
+  <section class="services-section" id="services">
+    <div class="sec-badge">OUR PREMIUM SERVICES</div>
+    <h2 class="sec-title">홈케어스클린업 <span>전문 케어 서비스</span></h2>
+    <p class="sec-sub">가전 부품 하나까지 완벽 분해하여 세균과 곰팡이를 근본부터 박멸합니다</p>
+
+    <div class="services-grid">
+      <!-- 서비스 1: 에어컨 완전분해 -->
+      <div class="service-card">
+        <div class="service-icon">❄️</div>
+        <h3>에어컨 100% 완전분해</h3>
+        <p>송풍팬, 드레인판, 냉각핀까지 부품 하나하나 고온 스팀과 친환경 세제로 세균 99.9% 살균 소독합니다.</p>
+        <div class="service-tags">
+          <span class="service-tag">벽걸이/스탠드</span>
+          <span class="service-tag">2in1/무풍</span>
+          <span class="service-tag">천장형 시스템</span>
+        </div>
+      </div>
+
+      <!-- 서비스 2: 세탁기 완전분해 -->
+      <div class="service-card">
+        <div class="service-icon">🧺</div>
+        <h3>세탁기 부품 완전분해</h3>
+        <p>빨래조 안쪽과 이중스파이더에 낀 검은 곰팡이와 미역 줄기 찌꺼기를 고압 세척으로 말끔히 제거합니다.</p>
+        <div class="service-tags">
+          <span class="service-tag">통돌이</span>
+          <span class="service-tag">드럼 세탁기</span>
+          <span class="service-tag">아기사랑 세탁기</span>
+        </div>
+      </div>
+
+      <!-- 서비스 3: 매트리스 & 소파 케어 -->
+      <div class="service-card">
+        <div class="service-icon">🛋️</div>
+        <h3>매트리스 & 소파 케어</h3>
+        <p>집진드기, 미세먼지 딥클리닝 건식 케어부터 땀자국과 얼룩을 제거하는 강력 습식 케어를 제공합니다.</p>
+        <div class="service-tags">
+          <span class="service-tag">건식 진드기케어</span>
+          <span class="service-tag">습식 얼룩제거</span>
+          <span class="service-tag">피톤치드 살균</span>
+        </div>
+      </div>
+
+      <!-- 서비스 4: 주방 후드 & 덕트 케어 -->
+      <div class="service-card">
+        <div class="service-icon">🍳</div>
+        <h3>주방 후드 & 덕트 케어</h3>
+        <p>찌든 기름때와 악취를 뿜어내는 주방 후드 필터와 팬을 특수 분해 약품으로 새것처럼 만듭니다.</p>
+        <div class="service-tags">
+          <span class="service-tag">가정용 후드</span>
+          <span class="service-tag">업소용 덕트</span>
+          <span class="service-tag">기름때 특수세척</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 4단계 딥클리닝 프로세스 (Process Section) -->
+  <section class="process-sec" id="process">
+    <div class="inner">
+      <div class="sec-badge">DISASSEMBLY PROCESS</div>
+      <h2 class="sec-title">안심 <span>4단계 딥클리닝 프로세스</span></h2>
+      <p class="sec-sub">100% 직영 엔지니어가 체계적인 정석 고강도 프로세스로 세척합니다</p>
+
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-num">1</div>
+          <h4>사전 작동진단</h4>
+          <p>작동 상태 및 오염도를 정밀하게 점검하고 세척 전 보호 보양 작업을 실시합니다.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">2</div>
+          <h4>100% 부품 완전분해</h4>
+          <p>커버, 전장부, 팬, 드레인판 등 세척 가능한 모든 부품을 완벽 분해합니다.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">3</div>
+          <h4>140℃ 스팀 & 살균세척</h4>
+          <p>친환경 약품과 140℃ 고온 스팀, 고압 세척기로 유해 세균을 99.9% 살균합니다.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">4</div>
+          <h4>조립 & 품질보증 A/S</h4>
+          <p>재조립 후 정상 작동 점검을 마치고, 100% 무상 품질보증서를 발급합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Comparison Section -->
+  <section class="compare-sec" id="compare">
     <div class="inner">
       <h2 class="sec-title">왜 <span>홈케어스클린업</span>을 선택해야 할까요?</h2>
-      <p class="sec-sub">타사 일반 세척과 비교할 수 없는 4단계 딥클리닝 솔루션</p>
+      <p class="sec-sub">타사 일반 세척과 비교할 수 없는 프리미엄 딥클리닝 솔루션</p>
 
       <div class="compare-grid">
         <div class="compare-card">
@@ -452,29 +500,6 @@
             <li>✅ 유해 세균 및 곰팡이 포자 99.9% 근본 박멸</li>
             <li>✅ 100% 본사 직영 전문 엔지니어 전담 및 A/S 책임제</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Before & After Section -->
-  <section class="ba-section" id="reviews">
-    <div class="inner">
-      <h2 class="sec-title">눈으로 확인하는 <span>100% 세척 결과</span></h2>
-      <p class="sec-sub">실제 홈케어스클린업 서비스 현장 비포 & 애프터</p>
-
-      <div class="ba-grid">
-        <div class="ba-card">
-          <div class="ba-img-box before">[ 세척 전 ] 곰팡이 오염 100%</div>
-          <div class="ba-info">
-            <h4>에어컨 송풍팬 & 냉각핀</h4>
-          </div>
-        </div>
-        <div class="ba-card">
-          <div class="ba-img-box after">[ 세척 후 ] 새것처럼 99.9% 멸균</div>
-          <div class="ba-info">
-            <h4>140℃ 고온스팀 완전 세척</h4>
-          </div>
         </div>
       </div>
     </div>
