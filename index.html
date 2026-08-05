@@ -1,13 +1,392 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 구글/네이버 검색엔진 최적화 (SEO) -->
+  <title>홈케어스클린업 | 100% 완전분해 에어컨·세탁기·매트리스 프리미엄 케어</title>
+  <meta name="description" content="우렁총각보다 꼼꼼한 100% 완전분해 세척! 140℃ 고온스팀과 친환경 약품으로 곰팡이·세균 99.9% 근본 박멸. 현대해상 5억 보험, 100% 본사직영.">
+  <meta name="keywords" content="홈케어스클린업, 에어컨청소, 세탁기청소, 에어컨분해세척, 세탁기분해세척, 매트리스청소">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
+  <style>
+    /* RESET & BASE */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; }
+    body { background-color: #FFFFFF; color: #1E293B; line-height: 1.6; word-break: keep-all; overflow-x: hidden; padding-bottom: 70px; }
+    a { text-decoration: none; color: inherit; }
+
+    /* 1. 상단 신뢰 트러스트 바 */
+    .top-trust-bar {
+      background: #0A2540;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .top-trust-bar span { display: flex; align-items: center; gap: 6px; }
+
+    /* 2. 네비게이션 헤더 */
+    .header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 24px; font-weight: 900; color: #0A2540; }
+    .logo span { color: #0066FF; }
+    .header-cta {
+      background: #0066FF;
+      color: #FFF;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 4px 14px rgba(0, 102, 255, 0.3);
+      transition: all 0.3s;
+    }
+    .header-cta:hover { background: #0052CC; transform: translateY(-2px); }
+
+    /* 3. 히어로 메인 섹션 */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px 80px 20px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0, 102, 255, 0.08);
+      color: #0066FF;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 8px 18px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .hero-title {
+      font-size: clamp(28px, 4.5vw, 46px);
+      font-weight: 900;
+      line-height: 1.35;
+      color: #0A2540;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero-title .highlight {
+      color: #0066FF;
+      background: linear-gradient(120deg, rgba(0, 212, 178, 0.25) 0%, rgba(0, 102, 255, 0.15) 100%);
+      padding: 0 8px;
+      border-radius: 6px;
+    }
+    .hero-desc {
+      font-size: clamp(15px, 2vw, 19px);
+      color: #64748B;
+      margin-bottom: 40px;
+    }
+
+    /* 4. 실시간 견적 계산기 카드 */
+    .calc-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 2px solid #E2E8F0;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 20px 50px -10px rgba(0, 102, 255, 0.1);
+      text-align: left;
+    }
+    .calc-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0A2540;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+    .form-group select {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 16px;
+      border: 1px solid #CBD5E1;
+      border-radius: 12px;
+      background-color: #F8FAFC;
+      color: #1E293B;
+      font-weight: 600;
+      outline: none;
+    }
+    .price-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #F0F7FF;
+      padding: 20px 24px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+    .price-box span { font-size: 16px; font-weight: 700; color: #334155; }
+    .price-box strong { font-size: 32px; font-weight: 900; color: #0066FF; }
+
+    .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 24px;
+      font-size: 17px;
+      font-weight: 800;
+      border-radius: 14px;
+      transition: all 0.25s ease;
+    }
+    .btn-primary { background: #0066FF; color: #FFF; box-shadow: 0 8px 20px -4px rgba(0, 102, 255, 0.4); }
+    .btn-primary:hover { background: #0052CC; transform: translateY(-2px); }
+    .btn-secondary { background: #0A2540; color: #FFF; }
+    .btn-secondary:hover { background: #1E3A8A; transform: translateY(-2px); }
+
+    /* 5. 우렁총각 VS 홈케어스클린업 비교 섹션 */
+    .compare-sec { background: #F8FAFC; padding: 80px 20px; }
+    .inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .sec-title { font-size: 34px; font-weight: 900; color: #0A2540; margin-bottom: 12px; }
+    .sec-title span { color: #0066FF; }
+    .sec-sub { font-size: 16px; color: #64748B; margin-bottom: 48px; }
+    
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; }
+    .compare-card {
+      background: #FFF;
+      border-radius: 24px;
+      padding: 40px 32px;
+      border: 1px solid #E2E8F0;
+      position: relative;
+    }
+    .compare-card.good {
+      border: 2px solid #0066FF;
+      box-shadow: 0 15px 40px -10px rgba(0, 102, 255, 0.15);
+    }
+    .badge-recommend {
+      position: absolute;
+      top: -14px; right: 28px;
+      background: #0066FF; color: #FFF;
+      font-size: 12px; font-weight: 800;
+      padding: 4px 14px; border-radius: 12px;
+    }
+    .card-tag { font-size: 14px; font-weight: 700; color: #64748B; margin-bottom: 10px; }
+    .card-tag.blue { color: #0066FF; }
+    .compare-card h3 { font-size: 22px; font-weight: 800; color: #0A2540; margin-bottom: 20px; }
+    .compare-card ul { list-style: none; }
+    .compare-card li { font-size: 16px; line-height: 1.9; color: #334155; margin-bottom: 10px; }
+
+    /* 6. 비포 & 애프터 갤러리 */
+    .ba-section { padding: 80px 20px; }
+    .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+    .ba-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden; }
+    .ba-img-box {
+      height: 220px;
+      background: #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #64748B;
+      position: relative;
+    }
+    .ba-img-box.before { background: #F1F5F9; color: #EF4444; }
+    .ba-img-box.after { background: #E0F2FE; color: #0066FF; }
+    .ba-info { padding: 20px; text-align: center; }
+    .ba-info h4 { font-size: 18px; font-weight: 800; color: #0A2540; }
+
+    /* 7. 모바일 하단 고정 빠른 상담바 */
+    .mobile-float-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #FFFFFF;
+      border-top: 1px solid #E2E8F0;
+      padding: 12px 16px;
+      display: flex;
+      gap: 10px;
+      z-index: 999;
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
+    }
+    .mobile-btn {
+      flex: 1;
+      text-align: center;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .mobile-btn.call { background: #0A2540; color: #FFF; }
+    .mobile-btn.chat { background: #0066FF; color: #FFF; }
+
+    @media (min-width: 769px) {
+      .mobile-float-bar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .calc-grid, .btn-group, .compare-grid { grid-template-columns: 1fr; }
+      .top-trust-bar { flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Trust Bar -->
+  <div class="top-trust-bar">
+    <span>🥇 100% 본사 직영 전문 엔지니어</span>
+    <span>🛡️ 현대해상 배상책임보험 5억 가입</span>
+    <span>✨ 서비스 후 100% 무상 A/S 보장</span>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">홈케어스<span>클린업</span></a>
+    <a href="tel:010-0000-0000" class="header-cta">전화 빠른상담</a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">PREMIUM COMPLETE DISASSEMBLY CLEANING</div>
+    <h1 class="hero-title">
+      겉만 닦는 일반 청소는 그만!<br>
+      <span class="highlight">100% 완전분해</span>로 곰팡이·세균 99.9% 완전 박멸
+    </h1>
+    <p class="hero-desc">
+      우렁총각보다 더 꼼꼼하고 완벽하게! 140℃ 고온 스팀 살균과 인체 무해 친환경 약품으로 세척합니다.
+    </p>
+
+    <!-- Realtime Calculator -->
+    <div class="calc-card">
+      <h3 class="calc-title">⚡ 3초 실시간 예상 견적 산출기</h3>
+      <div class="calc-grid">
+        <div class="form-group">
+          <label>세척 서비스 품목</label>
+          <select id="service-select" onchange="calculatePrice()">
+            <option value="80000">벽걸이 에어컨 세척</option>
+            <option value="120000" selected>스탠드 / 무풍 에어컨 세척</option>
+            <option value="160000">2in1 멀티 에어컨 세척</option>
+            <option value="90000">통돌이 세탁기 완전분해</option>
+            <option value="130000">드럼 세탁기 완전분해</option>
+            <option value="70000">매트리스 / 소파 케어</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>수량</label>
+          <select id="qty-select" onchange="calculatePrice()">
+            <option value="1">1대</option>
+            <option value="2">2대 (10% 할인)</option>
+            <option value="3">3대 이상 (단체할인 문의)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="price-box">
+        <span>예상 세척 금액</span>
+        <strong id="total-price">120,000원</strong>
+      </div>
+
+      <div class="btn-group">
+        <a href="tel:010-0000-0000" class="btn btn-primary">🔥 이 견적으로 즉시 예약하기</a>
+        <a href="tel:010-0000-0000" class="btn btn-secondary">📞 전화 직통 상담</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="compare-sec">
+    <div class="inner">
+      <h2 class="sec-title">왜 <span>홈케어스클린업</span>을 선택해야 할까요?</h2>
+      <p class="sec-sub">타사 일반 세척과 비교할 수 없는 4단계 딥클리닝 솔루션</p>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="card-tag">일반 청소 (타사/경쟁사)</div>
+          <h3>겉면/표면만 닦는 단순 청소</h3>
+          <ul>
+            <li>❌ 커버와 눈에 보이는 필터만 겉면 세척</li>
+            <li>❌ 안쪽 깊숙이 잔류한 곰팡이로 세척 후 악취 재발</li>
+            <li>❌ 독성 세제 사용으로 부식 및 호흡기 자극 위험</li>
+            <li>❌ 하청/일용직 기사의 불안정한 서비스 퀄리티</li>
+          </ul>
+        </div>
+
+        <div class="compare-card good">
+          <div class="badge-recommend">BEST CHOICE</div>
+          <div class="card-tag blue">홈케어스클린업</div>
+          <h3>부품 100% 완전분해 딥케어</h3>
+          <ul>
+            <li>✅ 부품 하나까지 완벽 분해 후 140℃ 고온스팀 살균</li>
+            <li>✅ 100% 인체 무해 친환경 약품 전용 세척</li>
+            <li>✅ 유해 세균 및 곰팡이 포자 99.9% 근본 박멸</li>
+            <li>✅ 100% 본사 직영 전문 엔지니어 전담 및 A/S 책임제</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before & After Section -->
+  <section class="ba-section">
+    <div class="inner">
+      <h2 class="sec-title">눈으로 확인하는 <span>100% 세척 결과</span></h2>
+      <p class="sec-sub">실제 홈케어스클린업 서비스 현장 비포 & 애프터</p>
+
+      <div class="ba-grid">
+        <div class="ba-card">
+          <div class="ba-img-box before">[ 세척 전 ] 곰팡이 오염 100%</div>
+          <div class="ba-info">
+            <h4>에어컨 송풍팬 & 냉각핀</h4>
+          </div>
+        </div>
+        <div class="ba-card">
+          <div class="ba-img-box after">[ 세척 후 ] 새것처럼 99.9% 멸균</div>
+          <div class="ba-info">
+            <h4>140℃ 고온스팀 완전 세척</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile Floating Bar -->
+  <div class="mobile-float-bar">
+    <a href="tel:010-0000-0000" class="mobile-btn call">📞 전화 상담</a>
+    <a href="tel:010-0000-0000" class="mobile-btn chat">🔥 즉시 예약</a>
+  </div>
+
+  <script>
+    function calculatePrice() {
+      const service = document.getElementById('service-select');
+      const qty = document.getElementById('qty-select');
+      const priceDisplay = document.getElementById('total-price');
+
+      let basePrice = parseInt(service.value, 10);
+      let count = parseInt(qty.value, 10);
+      let total = basePrice * count;
+
+      if (count === 2) total = total * 0.9; // 2대 선택시 10% 할인
+
+      priceDisplay.textContent = total.toLocaleString() + '원';
+    }
+  </script>
+</body>
+</html>
