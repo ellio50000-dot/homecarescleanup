@@ -1253,7 +1253,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
                                 <div className="aspect-[16/10] rounded-xl bg-slate-900 border border-dashed border-slate-700 flex flex-col items-center justify-center p-4 text-center">
                                   <ImageIcon className="w-8 h-8 text-slate-600 mb-1" />
                                   <span className="text-xs text-slate-400 font-bold">
-                                    [사진 준비중]
+                                    [사진 없음]
                                   </span>
                                 </div>
                               )}
@@ -1277,7 +1277,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
                                 <div className="aspect-[16/10] rounded-xl bg-slate-900 border border-dashed border-slate-700 flex flex-col items-center justify-center p-4 text-center">
                                   <ImageIcon className="w-8 h-8 text-slate-600 mb-1" />
                                   <span className="text-xs text-slate-400 font-bold">
-                                    [사진 준비중]
+                                    [사진 없음]
                                   </span>
                                 </div>
                               )}
@@ -1692,7 +1692,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
                         className="w-full h-full object-cover rounded-lg"
                       />
                     ) : (
-                      <span className="text-xs text-slate-500 font-bold">사진 없음 (사진 준비중)</span>
+                      <span className="text-xs text-slate-500 font-bold">사진 없음</span>
                     )}
                     <label className="mt-2 px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg cursor-pointer flex items-center space-x-1">
                       <Upload className="w-3.5 h-3.5" />
@@ -1720,7 +1720,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
                         className="w-full h-full object-cover rounded-lg"
                       />
                     ) : (
-                      <span className="text-xs text-slate-500 font-bold">사진 없음 (사진 준비중)</span>
+                      <span className="text-xs text-slate-500 font-bold">사진 없음</span>
                     )}
                     <label className="mt-2 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer flex items-center space-x-1">
                       <Upload className="w-3.5 h-3.5" />
