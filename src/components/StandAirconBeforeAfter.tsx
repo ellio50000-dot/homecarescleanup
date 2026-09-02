@@ -291,7 +291,7 @@ export const StandAirconBeforeAfter: React.FC<StandAirconBeforeAfterProps> = ({ 
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-slate-500">
                       <ImageIcon className="w-10 h-10 mb-2" />
-                      <span>실제 현장 사진 업로드 준비중</span>
+                      <span>등록된 현장 사진 없음</span>
                     </div>
                   )}
                 </div>
@@ -312,7 +312,7 @@ export const StandAirconBeforeAfter: React.FC<StandAirconBeforeAfterProps> = ({ 
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-slate-500">
                       <ImageIcon className="w-10 h-10 mb-2" />
-                      <span>실제 현장 사진 업로드 준비중</span>
+                      <span>등록된 현장 사진 없음</span>
                     </div>
                   )}
                 </div>
