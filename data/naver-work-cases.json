@@ -1,7 +1,441 @@
 [
-  {"region":"전주시 효자동","product":"drum-washer","title":"전주 효자동 드럼세탁기 분해청소","summary":"전주 효자동에서 진행한 드럼세탁기 분해청소 작업사례입니다.","url":"","verified":false},
-  {"region":"익산시 마동","product":"drum-washer","title":"익산 마동 풍경채 드럼세탁기 분해청소","summary":"익산 마동 풍경채에서 진행한 드럼세탁기 분해청소 작업사례입니다.","url":"","verified":false},
-  {"region":"익산시 마동","product":"dryer","title":"익산 마동 풍경채 건조기 분해청소","summary":"익산 마동 풍경채에서 진행한 건조기 분해청소 작업사례입니다.","url":"","verified":false},
-  {"region":"전주시 인후동","product":"refrigerator","title":"전주 인후동 원룸 냉장고 청소","summary":"전주 인후동 원룸에서 진행한 냉장고 청소 작업사례입니다.","url":"","verified":false},
-  {"region":"전주시 호성동","product":"stand-aircon","title":"전주 호성동 스탠드에어컨 분해청소","summary":"전주 호성동에서 진행한 스탠드에어컨 분해청소 작업사례입니다.","url":"","verified":false}
+  {
+    "city": "전주",
+    "region": "전주 효자동",
+    "products": [
+      "drum-washer"
+    ],
+    "title": "클라쎄 드럼세탁기 분해청소",
+    "summary": "세탁 15kg·건조 8kg 겸용 클라쎄 제품의 드럼통을 분리하고 세탁조 뒤편과 외조통 오염을 확인한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224406341997",
+    "published": "Wed, 09 Sep 2026 20:08:30 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "전주 효자동 드럼세탁기 분해청소｜세탁 후에도 냄새가 난다면?"
+  },
+  {
+    "city": "전주",
+    "region": "전주",
+    "products": [
+      "aircon"
+    ],
+    "title": "LG 휘센 이동식에어컨 분해청소",
+    "summary": "전주에서 진행한 LG 휘센 이동식에어컨의 내부 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224402768092",
+    "published": "Sun, 06 Sep 2026 18:02:30 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "“이동식 에어컨은 필터만 닦으면 끝?” 분해해보니 내부는 달랐습니다｜전주 LG 휘센 이동식에어컨 분해청소"
+  },
+  {
+    "city": "전주",
+    "region": "전주 인후동",
+    "products": [
+      "refrigerator"
+    ],
+    "title": "원룸 하이얼 냉장고 분해청소",
+    "summary": "원룸 하이얼 냉장고의 선반과 수납함을 분리해 청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224401987063",
+    "published": "Sat, 05 Sep 2026 18:18:58 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "전주 인후동 냉장고 청소｜원룸 냉장고, 안쪽만 닦으면 끝일까요? 하이얼 냉장고 분해청소"
+  },
+  {
+    "city": "전주",
+    "region": "전주 호성동",
+    "products": [
+      "stand-aircon",
+      "aircon"
+    ],
+    "title": "LG 휘센 스탠드에어컨 분해청소",
+    "summary": "LG 휘센 스탠드에어컨의 구조와 상태를 확인하며 분해 가능한 부품을 세척한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224399682828",
+    "published": "Thu, 03 Sep 2026 14:21:07 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "전주 호성동 스탠드에어컨청소｜겉은 깨끗해 보여도 송풍팬 안쪽은 달랐습니다  LG 휘센 분해청소"
+  },
+  {
+    "city": "정읍",
+    "region": "정읍 연지동",
+    "products": [
+      "wall-aircon",
+      "aircon"
+    ],
+    "title": "LG 휘센 벽걸이에어컨 분해청소",
+    "summary": "정읍 연지동에서 진행한 LG 휘센 벽걸이에어컨 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224389831601",
+    "published": "Tue, 25 Aug 2026 16:37:06 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "에어컨을 켜자마자 퀴퀴한 냄새가 난다면? 정읍 연지동 LG 휘센 벽걸이에어컨 분해청소 후기"
+  },
+  {
+    "city": "군산",
+    "region": "군산 화학구조대119",
+    "products": [
+      "dryer"
+    ],
+    "title": "삼성 건조기 분해청소",
+    "summary": "군산화학구조대119 직원들이 사용하는 삼성 건조기의 내부 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224388765137",
+    "published": "Mon, 24 Aug 2026 18:22:06 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "군산화학구조대119 건조기 분해청소  겉은 깨끗해도 내부를 열어보면 다릅니다"
+  },
+  {
+    "city": "전주",
+    "region": "전주 하가지구 영무예다음",
+    "products": [
+      "dryer"
+    ],
+    "title": "위닉스 8kg 건조기 분해청소",
+    "summary": "하가지구 영무예다음 아파트에서 진행한 위닉스 8kg 건조기 내부 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224388098609",
+    "published": "Mon, 24 Aug 2026 08:13:24 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "✨ 건조시간이 길어졌다면? 필터만의 문제가 아닐 수 있습니다｜전주 하가지구 영무예다음 위닉스 건조기 분해청소"
+  },
+  {
+    "city": "전주",
+    "region": "전주 인후동",
+    "products": [
+      "wall-aircon",
+      "aircon"
+    ],
+    "title": "벽걸이에어컨 분해청소",
+    "summary": "전주 인후동 벽걸이에어컨의 분해청소와 사용 후 관리에 관한 작업글입니다.",
+    "url": "https://blog.naver.com/turbo1987/224387165837",
+    "published": "Sun, 23 Aug 2026 07:35:04 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "️ 전주 인후동 벽걸이에어컨 분해청소｜더위가 가셨다면 청소·건조 후 덮개 씌워 보관하세요"
+  },
+  {
+    "city": "군산",
+    "region": "군산 군산대학교 디지털정보관",
+    "products": [
+      "air-purifier"
+    ],
+    "title": "LG 퓨리케어 2단 공기청정기 4대",
+    "summary": "군산대학교 디지털정보관의 LG 퓨리케어 2단 공기청정기 4대를 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224384660745",
+    "published": "Thu, 20 Aug 2026 17:11:47 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "하루 종일 공기를 빨아들이는 공기청정기, 내부까지 깨끗할까요?군산대학교 LG 퓨리케어 2단 4대 분해청소"
+  },
+  {
+    "city": "부안",
+    "region": "부안 봉덕주공아파트",
+    "products": [
+      "dryer",
+      "top-load-washer"
+    ],
+    "title": "건조기·통돌이세탁기 분해청소",
+    "summary": "부안 봉덕주공아파트 한 가정에서 건조기와 통돌이세탁기를 함께 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224381472806",
+    "published": "Mon, 17 Aug 2026 21:39:31 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "겉은 멀쩡했는데 분해하니 달랐습니다｜부안 봉덕주공아파트 건조기·통돌이세탁기 분해청소"
+  },
+  {
+    "city": "정읍",
+    "region": "정읍 금붕동",
+    "products": [
+      "dryer"
+    ],
+    "title": "삼성 9kg 건조기 분해청소",
+    "summary": "삼성 9kg 건조기의 커버를 분리해 공기 통로와 열교환기 주변 등의 보풀·먼지를 확인한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224380447975",
+    "published": "Sun, 16 Aug 2026 19:00:13 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "정읍 건조기청소, 겉은 멀쩡했는데 분해하자 먼지가 쏟아졌습니다 ｜금붕동 삼성 9kg 건조기 완전분해청소"
+  },
+  {
+    "city": "무주",
+    "region": "무주",
+    "products": [
+      "stand-aircon",
+      "aircon"
+    ],
+    "title": "위니아 웨이브 스탠드에어컨 분해청소",
+    "summary": "무주에서 진행한 위니아 웨이브 스탠드에어컨의 송풍팬·열교환기 분해세척 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224378818278",
+    "published": "Fri, 14 Aug 2026 19:47:23 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "️ 무주 위니아 웨이브 스탠드 에어컨 분해청소｜송풍팬부터 열교환기까지 제대로 세척했습니다"
+  },
+  {
+    "city": "진안",
+    "region": "진안 청년센터 쉐어하우스",
+    "products": [
+      "dryer",
+      "drum-washer"
+    ],
+    "title": "삼성 건조기·드럼세탁기 총 4대",
+    "summary": "공용 세탁공간에 적층 설치된 삼성 건조기 2대와 드럼세탁기 2대를 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224378648379",
+    "published": "Fri, 14 Aug 2026 16:38:11 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "진안청년센터 쉐어하우스 건조기·드럼세탁기 4대 분해청소  내부를 열어보니?"
+  },
+  {
+    "city": "임실",
+    "region": "임실 고운라피네아파트",
+    "products": [
+      "dryer",
+      "drum-washer"
+    ],
+    "title": "적층 건조기·드럼세탁기 분해청소",
+    "summary": "임실 고운라피네에서 위아래로 설치된 건조기와 드럼세탁기를 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224377680719",
+    "published": "Thu, 13 Aug 2026 18:26:41 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "임실 고운라피네 아파트        2단 건조기 드럼세탁기 분해청소｜겉은 깨끗해도 내부는 달랐습니다 ✨"
+  },
+  {
+    "city": "무주",
+    "region": "무주",
+    "products": [
+      "window-aircon",
+      "stand-aircon",
+      "wall-aircon",
+      "aircon"
+    ],
+    "title": "한일 창문형·투인원 에어컨 분해청소",
+    "summary": "무주에서 한일 창문형에어컨과 투인원의 스탠드·벽걸이 실내기를 함께 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224372977581",
+    "published": "Sun, 09 Aug 2026 15:15:38 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "무주 에어컨청소｜한일 창문형 에어컨 + 2in1 완전분해청소 현장 후기✨"
+  },
+  {
+    "city": "익산",
+    "region": "익산 마동",
+    "products": [
+      "drum-washer"
+    ],
+    "title": "LG 트롬 드럼세탁기 분해청소",
+    "summary": "건조기 아래에 설치된 LG 트롬 드럼세탁기의 분해청소 사례입니다. 이 글에서 확인된 작업은 세탁기 청소입니다.",
+    "url": "https://blog.naver.com/turbo1987/224372152389",
+    "published": "Sat, 08 Aug 2026 16:05:59 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "“겉은 깨끗한데 안쪽은 달랐습니다” 익산 마동 LG 드럼세탁기 분해청소 후기 ✨"
+  },
+  {
+    "city": "김제",
+    "region": "김제",
+    "products": [
+      "top-load-washer"
+    ],
+    "title": "LG 16kg 통돌이세탁기 분해청소",
+    "summary": "김제에서 진행한 LG 16kg 통돌이세탁기의 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224370451721",
+    "published": "Thu, 06 Aug 2026 22:21:43 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "겉은 멀쩡했는데 안쪽은 깜짝! 김제 LG 통돌이세탁기 분해청소 후기"
+  },
+  {
+    "city": "김제",
+    "region": "김제",
+    "products": [
+      "refrigerator"
+    ],
+    "title": "양문형 냉장고 분해청소",
+    "summary": "김제 고객님 댁 양문형 냉장고의 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224368620098",
+    "published": "Wed, 05 Aug 2026 10:20:03 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "✨ \"냉장고는 깨끗해 보여도 안심하면 안 됩니다!\"              김제 양문형 냉장고 분해청소 후기 | 홈케어스 클린업"
+  },
+  {
+    "city": "완주",
+    "region": "완주 용진읍",
+    "products": [
+      "aircon"
+    ],
+    "title": "LG 투인원 에어컨 분해청소",
+    "summary": "완주군 용진읍 고객님 댁에서 진행한 LG 투인원 에어컨 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224366345227",
+    "published": "Mon, 03 Aug 2026 09:03:07 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "\"겉은 깨끗한데 왜 냄새가 날까요?\"   전북 완주 용진 LG 투인원 에어컨 분해청소 후기✨"
+  },
+  {
+    "city": "전주",
+    "region": "전주 서신동 e편한세상",
+    "products": [
+      "drum-washer"
+    ],
+    "title": "삼성 플렉스워시 드럼세탁기 분해청소",
+    "summary": "서신동 e편한세상에서 진행한 삼성 플렉스워시 드럼세탁기 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224363147279",
+    "published": "Thu, 30 Jul 2026 20:30:20 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "\"세탁은 매일 했는데… 안쪽은 충격이었습니다!\" 전주 서신동 e편한세상 삼성 플렉스워시 드럼세탁기 완전 분해청소 후기 ️"
+  },
+  {
+    "city": "익산",
+    "region": "익산 모현동",
+    "products": [
+      "dryer"
+    ],
+    "title": "삼성 히트펌프 건조기 분해청소",
+    "summary": "익산 모현동에서 삼성 히트펌프 건조기의 내부를 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224359600019",
+    "published": "Mon, 27 Jul 2026 18:37:24 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "\"건조시간이 점점 길어지는 이유?\" 필터가 아니라 건조기 내부였습니다!｜익산 모현동 삼성 히트펌프 건조기 완전분해 청소 후기"
+  },
+  {
+    "city": "부안",
+    "region": "부안 줄포면 주민센터",
+    "products": [
+      "drum-washer",
+      "dryer"
+    ],
+    "title": "드럼세탁기 1대·건조기 2대",
+    "summary": "부안 줄포주민센터의 드럼세탁기 1대와 건조기 2대를 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224356163890",
+    "published": "Fri, 24 Jul 2026 06:13:49 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "[부안 세탁기청소] 줄포주민센터 드럼세탁기 1대·건조기 2대 완전 분해청소 현장! 전북 전지역 출장 전문 (홈케어스클린업)"
+  },
+  {
+    "city": "전주",
+    "region": "전주 혁신동",
+    "products": [
+      "system-aircon",
+      "aircon"
+    ],
+    "title": "LG 휘센 시스템에어컨 3대",
+    "summary": "전주 혁신동 가정에서 LG 휘센 시스템에어컨 3대를 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224350754448",
+    "published": "Sun, 19 Jul 2026 07:15:59 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "\"필터 청소만 믿었다간 큰일 납니다!\" 전주 혁신동 LG 휘센 시스템에어컨 3대 분해청소 후기"
+  },
+  {
+    "city": "익산",
+    "region": "익산 남중동 오투그란데",
+    "products": [
+      "drum-washer",
+      "dryer"
+    ],
+    "title": "삼성 드럼세탁기·건조기 분해청소",
+    "summary": "익산 남중동 오투그란데 아파트에서 삼성 드럼세탁기와 건조기를 함께 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224348155780",
+    "published": "Thu, 16 Jul 2026 09:05:15 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "\"건조기 필터만 청소하면 끝인 줄 알았는데… 이 안이 이렇게 생겼다고요?\" 건조기 드럼세탁기 분해청소 후기"
+  },
+  {
+    "city": "전주",
+    "region": "전주 혁신도시",
+    "products": [
+      "stand-aircon",
+      "gas-dryer",
+      "aircon"
+    ],
+    "title": "LG 스탠드에어컨·가스건조기 청소",
+    "summary": "전주 혁신도시에서 LG 휘센 스탠드에어컨과 LG 트롬 가스건조기를 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224344538404",
+    "published": "Mon, 13 Jul 2026 00:26:23 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "전주 혁신도시 LG 휘센 스탠드에어컨 & LG 트롬 가스건조기 분해청소! 연통을 열어보니 보풀이 눈처럼 수북… 그런데 신용카드까지?!"
+  },
+  {
+    "city": "익산",
+    "region": "익산 부송동 헬스장",
+    "products": [
+      "gas-dryer"
+    ],
+    "title": "LG 트롬 가스건조기 분해청소",
+    "summary": "리모델링 후 개업을 준비하던 익산 부송동 헬스장의 LG 가스건조기 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224343474463",
+    "published": "Sat, 11 Jul 2026 16:39:01 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "새로 오픈하는 헬스장인데 건조기 청소는 하셨나요?  익산 부송동 리모델링 헬스장 LG 트롬 가스 건조기 분해청소 후기｜홈케어스 클린업"
+  },
+  {
+    "city": "익산",
+    "region": "익산 동산동 풍경채",
+    "products": [
+      "drum-washer",
+      "dryer"
+    ],
+    "title": "드럼세탁기·건조기 분해청소",
+    "summary": "익산 동산동 풍경채아파트에서 드럼세탁기와 건조기를 함께 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224337610746",
+    "published": "Mon, 06 Jul 2026 06:48:09 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "빨래는 깨끗한데 왜 냄새날까? 익산 동산동 풍경채 아파트 후기 드럼세탁기·건조기 분해청소로 원인 해결"
+  },
+  {
+    "city": "군산",
+    "region": "군산 도레이첨단소재",
+    "products": [
+      "drum-washer"
+    ],
+    "title": "공용 세탁실 드럼세탁기 분해청소",
+    "summary": "군산 도레이첨단소재 내 직원들이 공동으로 이용하는 세탁실의 드럼세탁기 분해청소 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224333306978",
+    "published": "Wed, 01 Jul 2026 18:58:17 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "군산 도레이첨단소재 세탁실 드럼세탁기, 겉은 깨끗했는데 분해하자 내부가… 충격 그 자체였습니다 ‍ 분해청소후기~"
+  },
+  {
+    "city": "익산",
+    "region": "익산 골프장 클럽하우스",
+    "products": [
+      "system-aircon",
+      "aircon"
+    ],
+    "title": "도시바 시스템에어컨 10대",
+    "summary": "익산 골프장 클럽하우스에서 3일에 걸쳐 도시바 시스템에어컨 10대를 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224327592421",
+    "published": "Fri, 26 Jun 2026 06:51:28 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "익산에어컨청소｜익산 골프장 클럽하우스 도시바 시스템에어컨 10대 분해청소 후기"
+  },
+  {
+    "city": "정읍",
+    "region": "정읍",
+    "products": [
+      "window-aircon",
+      "wall-aircon",
+      "aircon"
+    ],
+    "title": "창문형·벽걸이에어컨 분해청소",
+    "summary": "정읍 고객님 댁 창문형에어컨 1대와 벽걸이에어컨 1대를 분해청소한 사례입니다.",
+    "url": "https://blog.naver.com/turbo1987/224314687320",
+    "published": "Sat, 13 Jun 2026 11:58:24 +0900",
+    "verified": true,
+    "verification": "RSS title and excerpt; full article not fetched",
+    "source_title": "정읍 창문형 에어컨·벽걸이 에어컨 분해청소 후기! 열어보니 숨겨진 곰팡이 창고였습니다"
+  }
 ]

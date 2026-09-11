@@ -2,7 +2,8 @@
 from pathlib import Path
 from html import escape as e
 import json
-from urllib.parse import urlparse
+from urllib.parse import urlparse, parse_qs
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'public' / 'jeonbuk-services'
@@ -75,11 +76,20 @@ def case_links(product=None):
   u=urlparse(c['url'])
   if u.scheme!='https' or u.hostname not in ('blog.naver.com','m.blog.naver.com'):
    raise ValueError('Case URL must be a verified Naver blog article')
-  if not (u.path.startswith('/turbo1987/') or ('blogId=turbo1987' in u.query and 'logNo=' in u.query)):
+  query=parse_qs(u.query)
+  if not (re.fullmatch(r'/turbo1987/[0-9]+',u.path) or (u.path=='/PostView.naver' and query.get('blogId')==['turbo1987'] and re.fullmatch(r'[0-9]+',query.get('logNo',[''])[0]))):
    raise ValueError('Case URL must identify an article in the established business blog')
-  if product is None or c['product']==product: published.append(c)
+  if product is None or product in c['products']: published.append(c)
  if not published: return ''
- return '<section><h2>지역별 실제 작업사례</h2><div class="cards">'+''.join(f'<a class="card" href="{e(c["url"],quote=True)}"><strong>{e(c["title"])}</strong><span>{e(c["summary"])} · 네이버 블로그에서 보기</span></a>' for c in published)+'</div></section>'
+ groups={}
+ for c in published: groups.setdefault(c['city'],[]).append(c)
+ content='<section id="work-cases"><h2>지역별 실제 작업사례</h2><p>홈케어스 클린업이 네이버 블로그에 공개한 작업글입니다. 지역과 제품을 확인하고 상세 작업 내용을 살펴보세요.</p>'
+ for city,items in groups.items():
+  content+=f'<h3>{e(city)} 작업사례</h3><div class="cards">'
+  for c in items:
+   content+=f'<a class="card" href="{e(c["url"],quote=True)}"><span>{e(c["region"])}</span><strong>{e(c["title"])}</strong><span>{e(c["summary"])}</span><br><span>네이버 블로그 작업글 보기</span></a>'
+  content+='</div>'
+ return content+'</section>'
 
 def calls():
  return '<div class="calls"><a href="tel:15777931">대표전화 1577-7931</a><a href="tel:01050051078">예약문의상담 010-5005-1078</a></div>'
